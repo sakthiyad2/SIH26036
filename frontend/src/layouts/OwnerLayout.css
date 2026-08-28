@@ -1,0 +1,132 @@
+/* =========================================================
+   OWNER DASHBOARD LAYOUT
+========================================================= */
+
+.dashboard-layout {
+  display: flex;
+
+  width: 100%;
+  min-height: 100vh;
+
+  background: #071525;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.dashboard-sidebar {
+  width: 250px;
+
+  min-width: 250px;
+
+  min-height: 100vh;
+
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  z-index: 1000;
+
+  background: #081a30;
+
+  overflow-y: auto;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.dashboard-main {
+  width: calc(100% - 250px);
+
+  min-height: 100vh;
+
+  margin-left: 250px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.dashboard-navbar {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 900;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.dashboard-content {
+  width: 100%;
+
+  min-height: calc(100vh - 80px);
+
+  box-sizing: border-box;
+
+  padding: 0;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .dashboard-sidebar {
+    width: 220px;
+
+    min-width: 220px;
+  }
+
+  .dashboard-main {
+    width: calc(100% - 220px);
+
+    margin-left: 220px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .dashboard-sidebar {
+    position: fixed;
+
+    width: 0;
+
+    min-width: 0;
+
+    overflow: hidden;
+  }
+
+  .dashboard-main {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+}

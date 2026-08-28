@@ -1,0 +1,428 @@
+/* =========================================================
+   e-Maap HOME PAGE
+   Glassmorphism Landing Page
+   ========================================================= */
+
+.home {
+  min-height: calc(100vh - 70px);
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(37, 99, 235, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(6, 182, 212, 0.15),
+      transparent 35%
+    );
+
+  color: #f8fafc;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: calc(100vh - 70px);
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 80px 8%;
+}
+
+
+/* =========================================================
+   HERO GLOW
+   ========================================================= */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  top: 10%;
+  left: -150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37, 99, 235, 0.20),
+      transparent 70%
+    );
+
+  filter: blur(50px);
+
+  pointer-events: none;
+}
+
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  right: -120px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(34, 211, 238, 0.15),
+      transparent 70%
+    );
+
+  filter: blur(50px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+  position: relative;
+
+  max-width: 850px;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   BADGE
+   ========================================================= */
+
+.hero-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 7px 14px;
+
+  margin-bottom: 20px;
+
+  border:
+    1px solid rgba(96, 165, 250, 0.25);
+
+  border-radius: 50px;
+
+  background:
+    rgba(59, 130, 246, 0.10);
+
+  color: #67e8f9;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    inset 0 1px 0
+      rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.hero h1 {
+  margin: 0;
+
+  font-size: clamp(
+    42px,
+    5vw,
+    72px
+  );
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+
+  font-weight: 850;
+
+  color: #f8fafc;
+}
+
+
+.hero h1::first-line {
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #bfdbfe,
+      #67e8f9
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.hero p {
+  max-width: 720px;
+
+  margin:
+    25px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   BUTTON CONTAINER
+   ========================================================= */
+
+.hero-buttons {
+  display: flex;
+
+  gap: 14px;
+
+  margin-top: 32px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+   ========================================================= */
+
+.primary-btn {
+  position: relative;
+
+  padding: 13px 24px;
+
+  border: none;
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #0891b2
+    );
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 30px
+      rgba(37, 99, 235, 0.25);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.primary-btn:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 18px 40px
+      rgba(37, 99, 235, 0.35);
+}
+
+
+/* =========================================================
+   SECONDARY BUTTON
+   ========================================================= */
+
+.secondary-btn {
+  padding: 12px 24px;
+
+  border:
+    1px solid rgba(148, 163, 184, 0.20);
+
+  border-radius: 11px;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  color: #dbeafe;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  backdrop-filter:
+    blur(15px);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.secondary-btn:hover {
+  transform:
+    translateY(-3px);
+
+  background:
+    rgba(59, 130, 246, 0.10);
+
+  border-color:
+    rgba(96, 165, 250, 0.30);
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.features-section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 8% 80px;
+}
+
+.features-section h2 {
+  margin: 0 0 24px;
+  color: #f8fafc;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.feature-card {
+  min-height: 190px;
+  padding: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.055);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(16px);
+}
+
+.feature-card > span {
+  display: block;
+  margin-bottom: 18px;
+  font-size: 26px;
+}
+
+.feature-card h3 {
+  margin: 0 0 8px;
+  color: #f8fafc;
+  font-size: 17px;
+}
+
+.feature-card p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: auto;
+
+    padding:
+      70px 25px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  .features-section {
+    padding: 0 25px 60px;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .hero {
+    padding:
+      55px 18px;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .features-section {
+    padding: 0 18px 45px;
+  }
+
+  .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+
+}

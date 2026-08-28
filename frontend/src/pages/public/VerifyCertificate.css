@@ -1,0 +1,697 @@
+/* =========================================================
+   SIH26036
+   VERIFY CERTIFICATE PAGE
+   ADVANCED GLASSMORPHISM DESIGN
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.public-page {
+  position: relative;
+
+  min-height: calc(100vh - 70px);
+
+  width: 100%;
+
+  padding: 80px 8% 100px;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 20%,
+      rgba(37, 99, 235, 0.28),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 95% 75%,
+      rgba(6, 182, 212, 0.20),
+      transparent 38%
+    ),
+    linear-gradient(
+      135deg,
+      #071426,
+      #081525 45%,
+      #06111f
+    );
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+   ========================================================= */
+
+.public-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  top: -220px;
+  left: -180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(37, 99, 235, 0.18);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+
+.public-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  right: -250px;
+  bottom: -250px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(6, 182, 212, 0.14);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   VERIFICATION SECTION
+   ========================================================= */
+
+.verification-section {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1050px;
+
+  margin-top: 30px;
+
+  padding: 52px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.10),
+      rgba(255, 255, 255, 0.035)
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+
+  backdrop-filter:
+    blur(28px);
+
+  -webkit-backdrop-filter:
+    blur(28px);
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.30);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CARD TOP LINE
+   ========================================================= */
+
+.verification-section::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #2563eb,
+      #38bdf8,
+      #2563eb,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   CARD GLOW
+   ========================================================= */
+
+.verification-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 280px;
+  height: 280px;
+
+  top: -130px;
+  right: -100px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(56, 189, 248, 0.08);
+
+  filter: blur(60px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.verification-section h1 {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 12px;
+
+  font-size:
+    clamp(38px, 5vw, 58px);
+
+  line-height: 1.05;
+
+  font-weight: 850;
+
+  letter-spacing: -0.04em;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #dbeafe 55%,
+      #67e8f9 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.verification-section > p {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 32px;
+
+  color: #aebed3;
+
+  font-size: 17px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.verification-form {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+   ========================================================= */
+
+.input-group {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.input-group label {
+  margin-bottom: 10px;
+
+  color: #dbeafe;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.01em;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.input-group input {
+  width: 100%;
+
+  height: 64px;
+
+  padding:
+    0 20px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.13);
+
+  border-radius: 15px;
+
+  outline: none;
+
+  background:
+    rgba(255, 255, 255, 0.055);
+
+  color: #f8fafc;
+
+  font-size: 16px;
+
+  font-weight: 500;
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+
+  box-shadow:
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.04);
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* =========================================================
+   INPUT PLACEHOLDER
+   ========================================================= */
+
+.input-group input::placeholder {
+  color: #718096;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+.input-group input:focus {
+  border-color:
+    rgba(56, 189, 248, 0.55);
+
+  background:
+    rgba(37, 99, 235, 0.075);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(37, 99, 235, 0.09),
+    0 15px 35px
+    rgba(0, 0, 0, 0.16);
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   SPACE BETWEEN INPUT GROUP AND BUTTON
+   ========================================================= */
+
+.verification-form > * + * {
+  margin-top: 28px !important;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+/*
+   This targets the actual button generated by your
+   reusable Button component.
+*/
+
+.verification-form button {
+  position: relative;
+
+  min-width: 210px;
+
+  min-height: 54px;
+
+  padding:
+    0 26px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(96, 165, 250, 0.45);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 30px
+    rgba(37, 99, 235, 0.30);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
+}
+
+
+/* =========================================================
+   BUTTON SHINE
+   ========================================================= */
+
+.verification-form button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 80%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+
+  transform:
+    skewX(-20deg);
+
+  transition:
+    left 0.6s ease;
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+   ========================================================= */
+
+.verification-form button:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 18px 42px
+    rgba(37, 99, 235, 0.40);
+
+  filter:
+    brightness(1.08);
+}
+
+
+.verification-form button:hover::before {
+  left: 130%;
+}
+
+
+/* =========================================================
+   BUTTON ACTIVE
+   ========================================================= */
+
+.verification-form button:active {
+  transform:
+    translateY(0);
+
+  box-shadow:
+    0 8px 20px
+    rgba(37, 99, 235, 0.25);
+}
+
+
+/* =========================================================
+   BUTTON DISABLED
+   ========================================================= */
+
+.verification-form button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   INPUT VALIDATION
+   ========================================================= */
+
+.input-group input:valid:not(:placeholder-shown) {
+  border-color:
+    rgba(34, 197, 94, 0.30);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .public-page {
+    padding:
+      60px 30px 80px;
+  }
+
+
+  .verification-section {
+    padding:
+      42px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .public-page {
+    min-height:
+      calc(100vh - 64px);
+
+    padding:
+      40px 16px 60px;
+  }
+
+
+  .verification-section {
+    margin-top: 10px;
+
+    padding:
+      32px 22px;
+
+    border-radius:
+      22px;
+  }
+
+
+  .verification-section h1 {
+    font-size:
+      38px;
+  }
+
+
+  .verification-section > p {
+    font-size:
+      14px;
+
+    line-height:
+      1.6;
+
+    margin-bottom:
+      26px;
+  }
+
+
+  .input-group label {
+    font-size:
+      13px;
+  }
+
+
+  .input-group input {
+    height:
+      58px;
+
+    font-size:
+      14px;
+
+    border-radius:
+      13px;
+  }
+
+
+  /* Mobile gap */
+
+  .verification-form > * + * {
+    margin-top:
+      24px !important;
+  }
+
+
+  .verification-form button {
+    width:
+      100%;
+
+    min-width:
+      0;
+
+    height:
+      52px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .public-page {
+    padding:
+      30px 12px 50px;
+  }
+
+
+  .verification-section {
+    padding:
+      28px 18px;
+  }
+
+
+  .verification-section h1 {
+    font-size:
+      33px;
+  }
+
+
+  .verification-section > p {
+    font-size:
+      13px;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.verification-form button:focus-visible {
+  outline:
+    3px solid
+    rgba(56, 189, 248, 0.35);
+
+  outline-offset:
+    3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .verification-form button,
+  .input-group input,
+  .verification-form button::before {
+    transition: none;
+  }
+
+}

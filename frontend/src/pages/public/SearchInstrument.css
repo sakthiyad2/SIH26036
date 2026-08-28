@@ -1,0 +1,404 @@
+/* =========================================================
+   SIH26036
+   SEARCH INSTRUMENT PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.public-page {
+  width: 100%;
+  min-height: calc(100vh - 90px);
+
+  box-sizing: border-box;
+
+  padding: 90px 6% 100px;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 0% 20%,
+      rgba(31, 91, 220, 0.45),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 100% 85%,
+      rgba(0, 188, 212, 0.30),
+      transparent 35%
+    ),
+    #06111f;
+
+  color: #ffffff;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   SEARCH SECTION
+   ========================================================= */
+
+.search-section {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
+.search-section h1 {
+  margin: 0 0 18px;
+
+  font-size: clamp(42px, 5vw, 68px);
+
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  color: #f5f8ff;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.search-section > p {
+  margin: 0 0 42px;
+
+  max-width: 750px;
+
+  color: #9eafc8;
+
+  font-size: 20px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   INPUT CARD
+   ========================================================= */
+
+.search-section .input-group {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 32px 32px 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(23, 49, 82, 0.75),
+      rgba(10, 30, 50, 0.72)
+    );
+
+  border: 1px solid rgba(111, 154, 203, 0.22);
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  backdrop-filter: blur(16px);
+
+  -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.search-section .input-group label {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: #d8e4f7;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+.search-section .input-group input {
+  width: 100%;
+
+  height: 84px;
+
+  box-sizing: border-box;
+
+  padding: 0 22px;
+
+  background:
+    rgba(38, 56, 77, 0.72);
+
+  border: 1px solid rgba(136, 166, 199, 0.25);
+
+  border-radius: 12px;
+
+  outline: none;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    transform 0.2s ease;
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.search-section .input-group input::placeholder {
+  color: #71839d;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   INPUT HOVER
+   ========================================================= */
+
+.search-section .input-group input:hover {
+  border-color: rgba(65, 169, 255, 0.45);
+
+  background:
+    rgba(43, 63, 86, 0.82);
+}
+
+
+/* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+.search-section .input-group input:focus {
+  border-color: #38bdf8;
+
+  background:
+    rgba(32, 54, 78, 0.92);
+
+  box-shadow:
+    0 0 0 3px rgba(56, 189, 248, 0.12),
+    0 0 25px rgba(0, 174, 255, 0.08);
+}
+
+
+/* =========================================================
+   SEARCH RESULTS
+   ========================================================= */
+
+.search-results {
+  width: 100%;
+
+  margin-top: 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   NO RESULT
+   ========================================================= */
+
+.search-results > p {
+  margin: 0;
+
+  padding: 25px;
+
+  text-align: center;
+
+  color: #9eafc8;
+
+  background:
+    rgba(13, 30, 49, 0.75);
+
+  border: 1px dashed rgba(122, 153, 188, 0.35);
+
+  border-radius: 14px;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   INSTRUMENT CARD
+   ========================================================= */
+
+.search-results .instrument-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   INSTRUMENT CARD HOVER
+   ========================================================= */
+
+.search-results .instrument-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .public-page {
+    padding: 70px 5% 80px;
+  }
+
+  .search-section h1 {
+    font-size: 48px;
+  }
+
+  .search-section > p {
+    font-size: 17px;
+
+    margin-bottom: 32px;
+  }
+
+  .search-section .input-group {
+    padding: 26px;
+  }
+
+  .search-section .input-group input {
+    height: 70px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .public-page {
+    min-height: calc(100vh - 70px);
+
+    padding: 50px 18px 60px;
+  }
+
+
+  .search-section h1 {
+    font-size: 38px;
+
+    letter-spacing: -0.8px;
+  }
+
+
+  .search-section > p {
+    margin-bottom: 28px;
+
+    font-size: 15px;
+
+    line-height: 1.55;
+  }
+
+
+  .search-section .input-group {
+    padding: 22px 18px;
+
+    border-radius: 14px;
+  }
+
+
+  .search-section .input-group label {
+    margin-bottom: 10px;
+
+    font-size: 14px;
+  }
+
+
+  .search-section .input-group input {
+    height: 58px;
+
+    padding: 0 16px;
+
+    font-size: 15px;
+
+    border-radius: 10px;
+  }
+
+
+  .search-results {
+    margin-top: 18px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .public-page {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+
+  .search-section h1 {
+    font-size: 32px;
+  }
+
+
+  .search-section > p {
+    font-size: 14px;
+  }
+
+
+  .search-section .input-group {
+    padding: 18px 14px;
+  }
+
+
+  .search-section .input-group input {
+    height: 54px;
+
+    font-size: 14px;
+  }
+}

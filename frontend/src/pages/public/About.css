@@ -1,0 +1,558 @@
+/* =========================================================
+   SIH26036 - ABOUT PAGE
+   ADVANCED GLASSMORPHISM DESIGN
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE CONTAINER
+   ========================================================= */
+
+.public-page {
+  position: relative;
+
+  width: 100%;
+  min-height: calc(100vh - 70px);
+
+  padding: 90px 8% 100px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(37, 99, 235, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 90% 75%,
+      rgba(6, 182, 212, 0.13),
+      transparent 35%
+    );
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW - TOP LEFT
+   ========================================================= */
+
+.public-page::before {
+  content: "";
+
+  position: absolute;
+
+  width: 400px;
+  height: 400px;
+
+  top: -180px;
+  left: -180px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(37, 99, 235, 0.18);
+
+  filter: blur(80px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW - BOTTOM RIGHT
+   ========================================================= */
+
+.public-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 450px;
+  height: 450px;
+
+  right: -220px;
+  bottom: -200px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(6, 182, 212, 0.14);
+
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN GLASS CARD
+   ========================================================= */
+
+.content-section {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 50px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.12);
+
+  backdrop-filter:
+    blur(25px);
+
+  -webkit-backdrop-filter:
+    blur(25px);
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.28);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CARD INNER LIGHT
+   ========================================================= */
+
+.content-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  top: -130px;
+  right: -100px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(59, 130, 246, 0.12);
+
+  filter: blur(45px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TOP ACCENT LINE
+   ========================================================= */
+
+.content-section::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #38bdf8,
+      #2563eb,
+      transparent
+    );
+
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   MAIN HEADING
+   ========================================================= */
+
+.content-section h1 {
+  position: relative;
+
+  margin-bottom: 25px;
+
+  font-size:
+    clamp(40px, 5vw, 62px);
+
+  font-weight: 850;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 20%,
+      #dbeafe 55%,
+      #67e8f9 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   DESCRIPTION PARAGRAPHS
+   ========================================================= */
+
+.content-section p {
+  position: relative;
+
+  max-width: 900px;
+
+  margin-bottom: 15px;
+
+  color: #b7c5d8;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.01em;
+}
+
+
+/* =========================================================
+   OBJECTIVES HEADING
+   ========================================================= */
+
+.content-section h2 {
+  position: relative;
+
+  margin-top: 45px;
+
+  margin-bottom: 25px;
+
+  padding-bottom: 14px;
+
+  color: #f8fafc;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.025em;
+}
+
+
+/* Small blue line below Objectives */
+
+.content-section h2::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 55px;
+  height: 3px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #38bdf8,
+      #2563eb
+    );
+}
+
+
+/* =========================================================
+   OBJECTIVES LIST
+   ========================================================= */
+
+.content-section ul {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 15px;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   OBJECTIVE ITEM
+   ========================================================= */
+
+.content-section li {
+  position: relative;
+
+  min-height: 75px;
+
+  display: flex;
+
+  align-items: center;
+
+  padding: 18px 20px 18px 58px;
+
+  border-radius: 16px;
+
+  color: #cbd5e1;
+
+  font-size: 15px;
+
+  line-height: 1.5;
+
+  background:
+    rgba(255, 255, 255, 0.045);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   OBJECTIVE NUMBER / CHECK
+   ========================================================= */
+
+.content-section li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 18px;
+
+  width: 27px;
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(37, 99, 235, 0.16);
+
+  border:
+    1px solid
+    rgba(56, 189, 248, 0.25);
+
+  color: #38bdf8;
+
+  font-size: 13px;
+
+  font-weight: 900;
+
+  box-shadow:
+    0 5px 15px
+    rgba(37, 99, 235, 0.15);
+}
+
+
+/* =========================================================
+   OBJECTIVE HOVER
+   ========================================================= */
+
+.content-section li:hover {
+  transform:
+    translateY(-5px);
+
+  background:
+    rgba(59, 130, 246, 0.08);
+
+  border-color:
+    rgba(56, 189, 248, 0.25);
+
+  box-shadow:
+    0 15px 35px
+    rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   OBJECTIVE CHECK HOVER
+   ========================================================= */
+
+.content-section li:hover::before {
+  background:
+    rgba(37, 99, 235, 0.25);
+
+  transform:
+    scale(1.08);
+}
+
+
+/* =========================================================
+   DESKTOP LARGE
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+  .public-page {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .content-section {
+    max-width: 1200px;
+
+    padding: 60px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .public-page {
+    padding:
+      70px 30px 80px;
+  }
+
+  .content-section {
+    padding: 40px;
+  }
+
+  .content-section ul {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .public-page {
+    min-height: calc(100vh - 64px);
+
+    padding:
+      45px 16px 60px;
+  }
+
+
+  .content-section {
+    padding: 30px 22px;
+
+    border-radius: 22px;
+  }
+
+
+  .content-section h1 {
+    font-size: 38px;
+
+    line-height: 1.1;
+  }
+
+
+  .content-section p {
+    font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+
+  .content-section h2 {
+    margin-top: 35px;
+
+    font-size: 27px;
+  }
+
+
+  .content-section ul {
+    gap: 12px;
+  }
+
+
+  .content-section li {
+    min-height: 70px;
+
+    padding:
+      16px 16px 16px 55px;
+
+    font-size: 14px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .public-page {
+    padding:
+      35px 12px 50px;
+  }
+
+
+  .content-section {
+    padding: 25px 18px;
+  }
+
+
+  .content-section h1 {
+    font-size: 33px;
+  }
+
+
+  .content-section p {
+    font-size: 14px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .content-section li {
+    transition: none;
+  }
+
+}

@@ -1,0 +1,762 @@
+/* =========================================================
+   SIH26036 - e-Maap
+   GLOBAL CSS
+   Advanced Glassmorphism Theme
+   ========================================================= */
+
+
+/* =========================================================
+   ROOT VARIABLES
+   ========================================================= */
+
+:root {
+
+  /* -------------------------------------------------------
+     FONT
+     ------------------------------------------------------- */
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+
+  /* -------------------------------------------------------
+     MAIN COLORS
+     ------------------------------------------------------- */
+
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #60a5fa;
+
+  --cyan: #22d3ee;
+  --cyan-dark: #0891b2;
+
+
+  /* -------------------------------------------------------
+     TEXT
+     ------------------------------------------------------- */
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-subtle: #64748b;
+
+
+  /* -------------------------------------------------------
+     BACKGROUNDS
+     ------------------------------------------------------- */
+
+  --background: #07111f;
+  --background-secondary: #0b1728;
+
+  --surface: rgba(255, 255, 255, 0.055);
+
+  --surface-hover: rgba(255, 255, 255, 0.085);
+
+
+  /* -------------------------------------------------------
+     GLASS
+     ------------------------------------------------------- */
+
+  --glass-background:
+    rgba(255, 255, 255, 0.055);
+
+  --glass-background-strong:
+    rgba(12, 30, 50, 0.78);
+
+  --glass-border:
+    rgba(255, 255, 255, 0.11);
+
+  --glass-border-light:
+    rgba(255, 255, 255, 0.16);
+
+
+  /* -------------------------------------------------------
+     STATUS COLORS
+     ------------------------------------------------------- */
+
+  --success: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
+  --info: #60a5fa;
+
+
+  /* -------------------------------------------------------
+     BORDER RADIUS
+     ------------------------------------------------------- */
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+
+  /* -------------------------------------------------------
+     SHADOWS
+     ------------------------------------------------------- */
+
+  --shadow-sm:
+    0 8px 20px rgba(0, 0, 0, 0.16);
+
+  --shadow-md:
+    0 15px 35px rgba(0, 0, 0, 0.22);
+
+  --shadow-lg:
+    0 25px 60px rgba(0, 0, 0, 0.35);
+
+
+  /* -------------------------------------------------------
+     GLOW
+     ------------------------------------------------------- */
+
+  --blue-glow:
+    0 0 30px rgba(59, 130, 246, 0.18);
+
+  --cyan-glow:
+    0 0 30px rgba(34, 211, 238, 0.14);
+
+
+  /* -------------------------------------------------------
+     BROWSER
+     ------------------------------------------------------- */
+
+  color-scheme: dark;
+
+  font-synthesis: none;
+
+  text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HTML
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+
+  min-width: 320px;
+
+  background:
+    #07111f;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+body {
+
+  min-width: 320px;
+
+  min-height: 100vh;
+
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(37, 99, 235, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 85%,
+      rgba(6, 182, 212, 0.10),
+      transparent 30%
+    ),
+    #07111f;
+
+  color: var(--text-primary);
+
+  font-family: inherit;
+
+  line-height: 1.5;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+#root {
+
+  min-height: 100vh;
+
+  width: 100%;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   GLOBAL BACKGROUND GLOW
+   ========================================================= */
+
+#root::before {
+
+  content: "";
+
+  position: fixed;
+
+  width: 450px;
+  height: 450px;
+
+  top: -200px;
+  left: -180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(37, 99, 235, 0.13),
+      transparent 70%
+    );
+
+  filter: blur(50px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+#root::after {
+
+  content: "";
+
+  position: fixed;
+
+  width: 400px;
+  height: 400px;
+
+  right: -160px;
+  bottom: -150px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(34, 211, 238, 0.10),
+      transparent 70%
+    );
+
+  filter: blur(50px);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   HEADINGS
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+  margin: 0;
+
+  color: var(--text-primary);
+
+  line-height: 1.25;
+
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   PARAGRAPH
+   ========================================================= */
+
+p {
+
+  margin: 0;
+
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+a {
+
+  color: inherit;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease;
+}
+
+
+a:hover {
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+button,
+input,
+textarea,
+select {
+
+  font: inherit;
+}
+
+
+button {
+
+  cursor: pointer;
+
+  border: none;
+}
+
+
+/* =========================================================
+   INPUT
+   ========================================================= */
+
+input,
+textarea,
+select {
+
+  outline: none;
+
+  color: var(--text-primary);
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+img {
+
+  display: block;
+
+  max-width: 100%;
+
+  height: auto;
+}
+
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+ul,
+ol {
+
+  list-style: none;
+
+  margin: 0;
+
+  padding: 0;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+table {
+
+  width: 100%;
+
+  border-spacing: 0;
+}
+
+
+/* =========================================================
+   GLASS UTILITY
+   ========================================================= */
+
+.glass {
+
+  background:
+    var(--glass-background);
+
+  border:
+    1px solid var(--glass-border);
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
+  box-shadow:
+    var(--shadow-sm);
+}
+
+
+/* =========================================================
+   GLASS STRONG
+   ========================================================= */
+
+.glass-strong {
+
+  background:
+    var(--glass-background-strong);
+
+  border:
+    1px solid var(--glass-border);
+
+  backdrop-filter:
+    blur(25px);
+
+  -webkit-backdrop-filter:
+    blur(25px);
+
+  box-shadow:
+    var(--shadow-md);
+}
+
+
+/* =========================================================
+   TEXT COLORS
+   ========================================================= */
+
+.text-primary {
+
+  color:
+    var(--text-primary);
+}
+
+
+.text-secondary {
+
+  color:
+    var(--text-secondary);
+}
+
+
+.text-muted {
+
+  color:
+    var(--text-muted);
+}
+
+
+.text-subtle {
+
+  color:
+    var(--text-subtle);
+}
+
+
+.text-success {
+
+  color:
+    var(--success);
+}
+
+
+.text-danger {
+
+  color:
+    var(--danger);
+}
+
+
+.text-warning {
+
+  color:
+    var(--warning);
+}
+
+
+.text-info {
+
+  color:
+    var(--info);
+}
+
+
+/* =========================================================
+   DISPLAY UTILITIES
+   ========================================================= */
+
+.flex {
+
+  display: flex;
+}
+
+
+.flex-column {
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.align-center {
+
+  align-items: center;
+}
+
+
+.justify-center {
+
+  justify-content: center;
+}
+
+
+.justify-between {
+
+  justify-content: space-between;
+}
+
+
+/* =========================================================
+   GAP
+   ========================================================= */
+
+.gap-sm {
+
+  gap: 8px;
+}
+
+
+.gap-md {
+
+  gap: 16px;
+}
+
+
+.gap-lg {
+
+  gap: 24px;
+}
+
+
+.gap-xl {
+
+  gap: 32px;
+}
+
+
+/* =========================================================
+   WIDTH
+   ========================================================= */
+
+.w-full {
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   MARGIN
+   ========================================================= */
+
+.mt-sm {
+
+  margin-top: 8px;
+}
+
+
+.mt-md {
+
+  margin-top: 16px;
+}
+
+
+.mt-lg {
+
+  margin-top: 24px;
+}
+
+
+.mb-sm {
+
+  margin-bottom: 8px;
+}
+
+
+.mb-md {
+
+  margin-bottom: 16px;
+}
+
+
+.mb-lg {
+
+  margin-bottom: 24px;
+}
+
+
+/* =========================================================
+   TEXT ALIGNMENT
+   ========================================================= */
+
+.text-center {
+
+  text-align: center;
+}
+
+
+.text-left {
+
+  text-align: left;
+}
+
+
+.text-right {
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   HIDDEN
+   ========================================================= */
+
+.hidden {
+
+  display: none !important;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+
+  width: 7px;
+
+  height: 7px;
+}
+
+
+::-webkit-scrollbar-track {
+
+  background:
+    #07111f;
+}
+
+
+::-webkit-scrollbar-thumb {
+
+  background:
+    rgba(96, 165, 250, 0.25);
+
+  border-radius:
+    10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+  background:
+    rgba(96, 165, 250, 0.40);
+}
+
+
+/* =========================================================
+   TEXT SELECTION
+   ========================================================= */
+
+::selection {
+
+  background:
+    rgba(59, 130, 246, 0.35);
+
+  color:
+    #ffffff;
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+
+  outline:
+    2px solid #60a5fa;
+
+  outline-offset:
+    3px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+
+    font-size: 14px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+}
