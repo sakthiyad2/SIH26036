@@ -14,7 +14,7 @@ const inspectionService = {
 
   getHistory: async () => {
     return api.get(
-      "/inspections/history"
+      "/inspections/my"
     );
   },
 
@@ -22,15 +22,16 @@ const inspectionService = {
     applicationId,
     inspectionData
   ) => {
-    return api.post(
-      `/inspections/${applicationId}/schedule`,
+    return api.patch(
+      `/applications/${applicationId}/assign`,
       inspectionData
     );
   },
 
   start: async (id) => {
     return api.patch(
-      `/inspections/${id}/start`
+      `/inspections/${id}/status`,
+      { status: "IN_PROGRESS" }
     );
   },
 
@@ -38,10 +39,20 @@ const inspectionService = {
     id,
     inspectionData
   ) => {
-    return api.post(
-      `/inspections/${id}/submit`,
-      inspectionData
+    const result = await api.post(
+      "/inspections/results",
+      {
+        ...inspectionData,
+        inspection_id: id
+      }
     );
+
+    await api.patch(
+      `/inspections/${id}/status`,
+      { status: "COMPLETED" }
+    );
+
+    return result;
   },
 
   addMeasurement: async (
@@ -49,8 +60,11 @@ const inspectionService = {
     measurementData
   ) => {
     return api.post(
-      `/inspections/${inspectionId}/measurements`,
-      measurementData
+      "/inspections/results",
+      {
+        ...measurementData,
+        inspection_id: inspectionId
+      }
     );
   },
 

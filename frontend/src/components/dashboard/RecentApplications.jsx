@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 function RecentApplications({
   applications = [],
   onView,
 }) {
+  const navigate = useNavigate();
+
   return (
     <div className="recent-applications">
       <div className="section-header">
@@ -18,7 +22,7 @@ function RecentApplications({
           <button
             type="button"
             className="dashboard-cta secondary"
-            onClick={() => window.location.assign("/owner/instruments/add")}
+            onClick={() => navigate("/owner/instruments/add")}
           >
             + Add Instrument
           </button>

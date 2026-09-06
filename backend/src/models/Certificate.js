@@ -83,6 +83,29 @@ const Certificate = {
     return rows;
   },
 
+  async findByOwnerUserId(userId) {
+    const [rows] = await pool.execute(
+            `SELECT c.*,
+              c.certificate_status AS status,
+              i.instrument_name,
+              i.serial_number,
+              i.manufacturer,
+              i.model_number
+       FROM certificates c
+       INNER JOIN applications a
+         ON c.application_id = a.application_id
+       INNER JOIN owners o
+         ON a.owner_id = o.owner_id
+       LEFT JOIN instruments i
+         ON c.instrument_id = i.instrument_id
+       WHERE o.user_id = ?
+       ORDER BY c.certificate_id DESC`,
+      [userId]
+    );
+
+    return rows;
+  },
+
   async updateStatus(id, status) {
     await pool.execute(
       `UPDATE certificates

@@ -6,7 +6,8 @@ const {
   getApplication,
   getMyApplications,
   updateApplicationStatus,
-  assignInspector
+  assignInspector,
+  cancelApplication
 } = require("../controllers/applicationController");
 
 const {
@@ -82,6 +83,13 @@ router.patch(
   authenticate,
   authorizeRoles("OFFICIAL"),
   assignInspector
+);
+
+router.patch(
+  "/:id/cancel",
+  authenticate,
+  authorizeRoles("OWNER"),
+  cancelApplication
 );
 
 router.patch(

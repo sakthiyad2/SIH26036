@@ -24,7 +24,9 @@ function Navbar({ onMenuToggle, menuOpen: controlledMenuOpen }) {
 
   const userEmail = user?.email || "";
 
-  const userRole = user?.role || "OWNER";
+  const userRole = String(
+    user?.role || "OWNER"
+  ).toUpperCase();
 
 
   /* =====================================================
@@ -112,7 +114,7 @@ function Navbar({ onMenuToggle, menuOpen: controlledMenuOpen }) {
         return "/inspector/profile";
 
       case "ADMIN":
-        return "/admin/profile";
+        return "/admin/dashboard";
 
       case "OFFICIAL":
         return "/official/profile";
@@ -139,7 +141,7 @@ function Navbar({ onMenuToggle, menuOpen: controlledMenuOpen }) {
         return "/admin/notifications";
 
       case "OFFICIAL":
-        return "/official/notifications";
+        return "/official/dashboard";
 
       default:
         return "/";

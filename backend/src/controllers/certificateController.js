@@ -1,6 +1,8 @@
 // Certificate controller placeholder.
 const Certificate =
   require("../models/Certificate");
+const fs = require("fs");
+const path = require("path");
 
 const {
   createCertificate,
@@ -15,6 +17,26 @@ const getCertificates = async (
   try {
     const certificates =
       await Certificate.findAll();
+
+    res.json({
+      success: true,
+      data: certificates
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getMyCertificates = async (
+  req,
+  res,
+  next
+) => {
+  try {
+    const certificates =
+      await Certificate.findByOwnerUserId(
+        req.user.user_id
+      );
 
     res.json({
       success: true,
@@ -116,9 +138,51 @@ const updateStatus = async (
   }
 };
 
+const download = async (
+  req,
+  res,
+  next
+) => {
+  try {
+    const certificate =
+      await Certificate.findById(
+        req.params.id
+      );
+
+    if (!certificate || !certificate.certificate_file) {
+      return res.status(404).json({
+        success: false,
+        message: "Certificate file not found"
+      });
+    }
+
+    const storedPath = path.isAbsolute(
+      certificate.certificate_file
+    )
+      ? certificate.certificate_file
+      : path.resolve(
+          process.cwd(),
+          certificate.certificate_file
+        );
+
+    if (!fs.existsSync(storedPath)) {
+      return res.status(404).json({
+        success: false,
+        message: "Certificate file not found"
+      });
+    }
+
+    return res.download(storedPath);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getCertificates,
+  getMyCertificates,
   getCertificate,
+  download,
   create,
   verify,
   updateStatus

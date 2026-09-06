@@ -48,6 +48,23 @@ const Notification = {
     );
 
     return this.findById(id);
+  },
+
+  async markAllAsRead(userId) {
+    await pool.execute(
+      `UPDATE notifications
+       SET is_read = true
+       WHERE user_id = ?`,
+      [userId]
+    );
+  },
+
+  async delete(id) {
+    await pool.execute(
+      `DELETE FROM notifications
+       WHERE notification_id = ?`,
+      [id]
+    );
   }
 };
 

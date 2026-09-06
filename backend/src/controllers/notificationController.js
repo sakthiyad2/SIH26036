@@ -1,7 +1,9 @@
 // Notification controller placeholder.
 const {
   getUserNotifications,
-  markNotificationRead
+  markNotificationRead,
+  markAllNotificationsRead,
+  deleteNotification
 } = require("../services/notificationService");
 
 const getNotifications = async (
@@ -46,7 +48,33 @@ const markRead = async (
   }
 };
 
+const markAllRead = async (req, res, next) => {
+  try {
+    await markAllNotificationsRead(req.user.user_id);
+    res.json({
+      success: true,
+      message: "Notifications marked as read"
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const removeNotification = async (req, res, next) => {
+  try {
+    await deleteNotification(req.params.id);
+    res.json({
+      success: true,
+      message: "Notification deleted"
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getNotifications,
-  markRead
+  markRead,
+  markAllRead,
+  removeNotification
 };

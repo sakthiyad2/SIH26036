@@ -2,7 +2,9 @@ const express = require("express");
 
 const {
   getNotifications,
-  markRead
+  markRead,
+  markAllRead,
+  removeNotification
 } = require("../controllers/notificationController");
 
 const {
@@ -21,6 +23,12 @@ router.get(
   getNotifications
 );
 
+router.patch(
+  "/read-all",
+  authenticate,
+  markAllRead
+);
+
 // ============================================================
 // MARK NOTIFICATION AS READ
 // ============================================================
@@ -29,6 +37,12 @@ router.patch(
   "/:id/read",
   authenticate,
   markRead
+);
+
+router.delete(
+  "/:id",
+  authenticate,
+  removeNotification
 );
 
 module.exports = router;

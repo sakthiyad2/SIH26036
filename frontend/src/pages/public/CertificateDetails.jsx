@@ -62,8 +62,9 @@ function CertificateDetails() {
   }, [certificateNumber]);
 
   const verificationUrl = `${
-    import.meta.env.VITE_PUBLIC_APP_URL || window.location.origin
-  }/certificate/${encodeURIComponent(certificateNumber || "")}`;
+    import.meta.env.VITE_PUBLIC_APP_URL ||
+    `${window.location.origin}${import.meta.env.BASE_URL}`
+  }certificate/${encodeURIComponent(certificateNumber || "")}`;
 
   return (
     <div className="public-page certificate-details-page">

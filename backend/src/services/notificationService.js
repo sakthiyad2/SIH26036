@@ -22,8 +22,18 @@ const markNotificationRead = async (id) => {
   return Notification.markAsRead(id);
 };
 
+const markAllNotificationsRead = async (userId) => {
+  return Notification.markAllAsRead(userId);
+};
+
+const deleteNotification = async (id) => {
+  return Notification.delete(id);
+};
+
 module.exports = {
   createNotification,
   getUserNotifications,
-  markNotificationRead
+  markNotificationRead,
+  markAllNotificationsRead,
+  deleteNotification
 };

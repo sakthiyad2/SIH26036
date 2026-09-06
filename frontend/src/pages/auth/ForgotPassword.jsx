@@ -3,21 +3,35 @@ import { Link } from "react-router-dom";
 import Input from "../../components/common/Input";
 import Button from "../../components/common/Button";
 import Alert from "../../components/common/Alert";
+import authService from "../../services/authService";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!email) {
       return;
     }
 
-    setMessage(
-      "If this email is registered, a password reset link will be sent."
-    );
+    try {
+      setLoading(true);
+      setError("");
+      const response = await authService.forgotPassword(email);
+      setMessage(response.data?.message || "Reset link requested.");
+    } catch (requestError) {
+      setMessage("");
+      setError(
+        requestError.response?.data?.message ||
+        "Unable to request a password reset."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -33,6 +47,11 @@ function ForgotPassword() {
         type="success"
       />
 
+      <Alert
+        message={error}
+        type="error"
+      />
+
       <form onSubmit={handleSubmit}>
         <Input
           label="Email"
@@ -46,8 +65,8 @@ function ForgotPassword() {
           required
         />
 
-        <Button type="submit">
-          Send Reset Link
+        <Button type="submit" disabled={loading}>
+          {loading ? "Sending..." : "Send Reset Link"}
         </Button>
       </form>
 

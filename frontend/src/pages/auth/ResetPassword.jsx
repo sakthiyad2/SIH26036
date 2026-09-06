@@ -1,29 +1,48 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Input from "../../components/common/Input";
 import Button from "../../components/common/Button";
 import Alert from "../../components/common/Alert";
+import authService from "../../services/authService";
 
 function ResetPassword() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get("token") || "";
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] =
     useState("");
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!token) {
+      setError("This password reset link is missing or invalid.");
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
 
-    alert("Password reset successfully.");
-
-    navigate("/login");
+    try {
+      setLoading(true);
+      setError("");
+      await authService.resetPassword(token, password);
+      navigate("/login", { replace: true });
+    } catch (requestError) {
+      setError(
+        requestError.response?.data?.message ||
+        "Unable to reset your password."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -58,8 +77,8 @@ function ResetPassword() {
           required
         />
 
-        <Button type="submit">
-          Reset Password
+        <Button type="submit" disabled={loading}>
+          {loading ? "Resetting..." : "Reset Password"}
         </Button>
       </form>
     </div>

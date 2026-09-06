@@ -2,7 +2,9 @@ const express = require("express");
 
 const {
   getCertificates,
+  getMyCertificates,
   getCertificate,
+  download,
   create,
   verify,
   updateStatus
@@ -23,6 +25,19 @@ const router = express.Router();
 router.get(
   "/verify/:number",
   verify
+);
+
+router.get(
+  "/my",
+  authenticate,
+  authorizeRoles("OWNER"),
+  getMyCertificates
+);
+
+router.get(
+  "/:id/download",
+  authenticate,
+  download
 );
 
 // ============================================================
@@ -56,7 +71,8 @@ router.post(
   authenticate,
   authorizeRoles(
     "ADMIN",
-    "INSPECTOR"
+    "INSPECTOR",
+    "OFFICIAL"
   ),
   create
 );

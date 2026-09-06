@@ -1,6 +1,8 @@
 const {
   registerUser,
-  loginUser
+  loginUser,
+  requestPasswordReset,
+  resetPassword
 } = require("../services/authService");
 
 // ============================================================
@@ -24,7 +26,6 @@ const register = async (req, res) => {
           "Name, email and password are required"
       });
     }
-
     const result = await registerUser({
       name,
       email,
@@ -51,6 +52,40 @@ const register = async (req, res) => {
       success: false,
       message:
         error.message
+    });
+  }
+};
+
+const forgotPassword = async (req, res) => {
+  try {
+    if (!req.body.email) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required"
+      });
+    }
+
+    const message = await requestPasswordReset(req.body.email);
+    return res.json({ success: true, message });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+const resetPasswordController = async (req, res) => {
+  try {
+    await resetPassword(req.body.token, req.body.password);
+    return res.json({
+      success: true,
+      message: "Password reset successfully"
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: "Invalid or expired reset request"
     });
   }
 };
@@ -133,5 +168,7 @@ const getMe = async (req, res) => {
 module.exports = {
   register,
   login,
-  getMe
+  getMe,
+  forgotPassword,
+  resetPassword: resetPasswordController
 };

@@ -5,9 +5,12 @@ const {
 } = require("../utils/password");
 
 const {
-  generateToken
+  generateToken,
+  generatePasswordResetToken,
+  verifyPasswordResetToken
 } = require("../utils/jwt");
 const { pool } = require("../config/database");
+const { sendEmail } = require("./emailService");
 
 // ============================================================
 // NORMALIZE REGISTRATION ROLE
@@ -236,11 +239,47 @@ const loginUser = async (
   };
 };
 
+const requestPasswordReset = async (email) => {
+  const normalizedEmail = email.trim().toLowerCase();
+  const user = await User.findByEmail(normalizedEmail);
+
+  if (user) {
+    const token = generatePasswordResetToken(user);
+    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+
+    await sendEmail({
+      to: user.email,
+      subject: "Password reset request",
+      message: `${frontendUrl}/reset-password?token=${encodeURIComponent(token)}`
+    });
+  }
+
+  return "If this email is registered, a password reset link will be sent.";
+};
+
+const resetPassword = async (token, password) => {
+  if (!password || password.length < 8) {
+    throw new Error("Password must be at least 8 characters");
+  }
+
+  const payload = verifyPasswordResetToken(token);
+  const passwordHash = await hashPassword(password);
+  const user = await User.update(payload.user_id, {
+    password_hash: passwordHash
+  });
+
+  if (!user) {
+    throw new Error("User not found");
+  }
+};
+
 // ============================================================
 // EXPORT
 // ============================================================
 
 module.exports = {
   registerUser,
-  loginUser
+  loginUser,
+  requestPasswordReset,
+  resetPassword
 };

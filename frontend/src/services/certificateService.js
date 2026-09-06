@@ -18,6 +18,13 @@ const certificateService = {
     );
   },
 
+  create: async (certificateData) => {
+    return api.post(
+      "/certificates",
+      certificateData
+    );
+  },
+
   verify: async (
     certificateNumber
   ) => {

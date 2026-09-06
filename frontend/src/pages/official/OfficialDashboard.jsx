@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import api from "../../services/api";
 import applicationService from "../../services/applicationService";
 import userService from "../../services/userService";
+import certificateService from "../../services/certificateService";
 import "./OfficialDashboard.css";
 
 function OfficialDashboard() {
@@ -103,6 +104,28 @@ function OfficialDashboard() {
       setError("");
     } catch (err) {
       const serverMessage = err?.response?.data?.message || err?.message || "Unable to review application";
+      setError(serverMessage);
+    }
+  };
+
+  const issueCertificate = async (application) => {
+    try {
+      const issuedDate = new Date();
+      const validUntil = new Date(issuedDate);
+      validUntil.setFullYear(validUntil.getFullYear() + 1);
+
+      await certificateService.create({
+        application_id: application.application_id,
+        instrument_id: application.instrument_id,
+        issued_date: issuedDate.toISOString().slice(0, 10),
+        valid_until: validUntil.toISOString().slice(0, 10),
+        status: "VALID"
+      });
+
+      await loadSubmissions();
+      setError("");
+    } catch (err) {
+      const serverMessage = err?.response?.data?.message || err?.message || "Unable to issue certificate";
       setError(serverMessage);
     }
   };
@@ -250,6 +273,11 @@ function OfficialDashboard() {
                               Reject
                             </button>
                           </>
+                        )}
+                        {item.status === "APPROVED" && (
+                          <button type="button" className="dashboard-cta" onClick={() => issueCertificate(item)}>
+                            Issue Certificate
+                          </button>
                         )}
                       </div>
                     )}

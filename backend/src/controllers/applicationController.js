@@ -320,11 +320,36 @@ const assignInspector = async (req, res, next) => {
   }
 };
 
+const cancelApplication = async (req, res, next) => {
+  try {
+    const owner = await Owner.findByUserId(req.user.user_id);
+    const application = await Application.findById(req.params.id);
+
+    if (!application) {
+      return res.status(404).json({ success: false, message: "Application not found" });
+    }
+
+    if (!owner || Number(application.owner_id) !== Number(owner.owner_id)) {
+      return res.status(403).json({ success: false, message: "You cannot cancel this application" });
+    }
+
+    if (["APPROVED", "REJECTED", "CANCELLED"].includes(application.status)) {
+      return res.status(409).json({ success: false, message: "This application cannot be cancelled" });
+    }
+
+    const cancelled = await Application.updateStatus(req.params.id, "CANCELLED");
+    return res.json({ success: true, message: "Application cancelled", data: cancelled });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createApplication,
   getApplications,
   getApplication,
   getMyApplications,
   updateApplicationStatus,
-  assignInspector
+  assignInspector,
+  cancelApplication
 };

@@ -29,7 +29,9 @@ ReactDOM.createRoot(
 
   <React.StrictMode>
 
-    <BrowserRouter>
+    <BrowserRouter
+      basename={import.meta.env.PROD ? import.meta.env.BASE_URL : "/"}
+    >
 
       <AuthProvider>
 

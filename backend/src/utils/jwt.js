@@ -49,11 +49,39 @@ const verifyToken = (token) => {
   );
 };
 
+const generatePasswordResetToken = (user) => {
+  if (!user) {
+    throw new Error("User is required to generate a reset token");
+  }
+
+  return jwt.sign(
+    {
+      user_id: user.user_id,
+      email: user.email,
+      purpose: "PASSWORD_RESET"
+    },
+    config.JWT_SECRET,
+    { expiresIn: "15m" }
+  );
+};
+
+const verifyPasswordResetToken = (token) => {
+  const payload = verifyToken(token);
+
+  if (payload.purpose !== "PASSWORD_RESET") {
+    throw new Error("Invalid password reset token");
+  }
+
+  return payload;
+};
+
 // ============================================================
 // EXPORT
 // ============================================================
 
 module.exports = {
   generateToken,
-  verifyToken
+  verifyToken,
+  generatePasswordResetToken,
+  verifyPasswordResetToken
 };

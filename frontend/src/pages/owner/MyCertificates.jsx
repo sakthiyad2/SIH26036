@@ -1,22 +1,32 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CertificateCard from "../../components/certificates/CertificateCard";
+import certificateService from "../../services/certificateService";
 import "./MyCertificates.css";
 
 function MyCertificates() {
   const navigate = useNavigate();
+  const [certificates, setCertificates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  const certificates = [
-    {
-      certificate_id: 1,
-      certificate_number:
-        "CERT-2026-0001",
-      instrument_name:
-        "Electronic Weighing Scale",
-      issue_date: "2026-08-01",
-      expiry_date: "2027-08-01",
-      certificate_status: "VALID",
-    },
-  ];
+  useEffect(() => {
+    const loadCertificates = async () => {
+      try {
+        const response = await certificateService.getMyCertificates();
+        setCertificates(response.data?.data || []);
+      } catch (requestError) {
+        setError(
+          requestError.response?.data?.message ||
+          "Unable to load your certificates."
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadCertificates();
+  }, []);
 
   return (
     <div className="page owner-certificates-page">
@@ -29,14 +39,25 @@ function MyCertificates() {
         </p>
       </div>
 
+      {error && <div className="alert alert-error">{error}</div>}
+
       <div className="card-grid">
-        {certificates.map((certificate) => (
+        {loading && <p>Loading certificates...</p>}
+
+        {!loading && !error && certificates.length === 0 && (
+          <p>No certificates have been issued yet.</p>
+        )}
+
+        {!loading && certificates.map((certificate) => (
           <CertificateCard
             key={certificate.certificate_id}
             certificate={certificate}
             onView={() =>
               navigate(
-                `/owner/certificates/${certificate.certificate_id}`
+                `/certificate/${encodeURIComponent(
+                  certificate.certificate_number ||
+                  certificate.certificateNumber
+                )}`
               )
             }
           />

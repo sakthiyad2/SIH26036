@@ -478,7 +478,7 @@
   flex: 1 1 auto;
   margin-left: auto;
   margin-right: 8px;
-  gap: 0;
+  gap: 3px;
   overflow: hidden;
   justify-content: flex-end;
 }
@@ -491,9 +491,9 @@
 .dashboard-layout .navbar-link {
   min-width: 0;
   flex: 0 0 auto;
-  padding-left: 5px;
-  padding-right: 5px;
-  font-size: 11px;
+  padding-left: 13px;
+  padding-right: 13px;
+  font-size: 14px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -533,9 +533,9 @@
   }
 
   .dashboard-layout .navbar-link {
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 11px;
+    padding-left: 9px;
+    padding-right: 9px;
+    font-size: 13px;
   }
 }
 

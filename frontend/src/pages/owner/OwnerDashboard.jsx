@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./OwnerDashboard.css";
 import api from "../../services/api";
 import InstrumentTable from "../../components/instruments/InstrumentTable";
 
 function OwnerDashboard() {
+  const navigate = useNavigate();
+
   const [stats, setStats] = useState({
     instruments: 0,
     applications: 0,
@@ -26,10 +28,15 @@ function OwnerDashboard() {
       setLoading(true);
       setError("");
 
-      const [instrumentsResult, applicationsResult] =
+      const [
+        instrumentsResult,
+        applicationsResult,
+        certificatesResult
+      ] =
         await Promise.allSettled([
           api.get("/instruments/my"),
-          api.get("/applications/my")
+          api.get("/applications/my"),
+          api.get("/certificates/my")
         ]);
 
       if (instrumentsResult.status === "rejected") {
@@ -40,6 +47,9 @@ function OwnerDashboard() {
       const ownerApplications = applicationsResult.status === "fulfilled"
         ? applicationsResult.value.data?.data || []
         : [];
+      const ownerCertificates = certificatesResult.status === "fulfilled"
+        ? certificatesResult.value.data?.data || []
+        : [];
 
       setInstruments(instrumentList);
       setStats({
@@ -48,12 +58,16 @@ function OwnerDashboard() {
         verified: instrumentList.filter(
           (instrument) => instrument.status === "VERIFIED"
         ).length,
-        certificates: 0,
+        certificates: ownerCertificates.length,
       });
       setApplications(ownerApplications);
 
       if (applicationsResult.status === "rejected") {
         setError("Applications could not be loaded, but your instrument count is up to date.");
+      }
+
+      if (certificatesResult.status === "rejected") {
+        setError("Certificates could not be loaded, but your other dashboard data is up to date.");
       }
     } catch (error) {
       console.error("Failed to load owner dashboard:", error);
@@ -409,7 +423,7 @@ function OwnerDashboard() {
           <InstrumentTable
             instruments={instruments.slice(0, 5)}
             onView={(instrument) =>
-              (window.location.href = `/owner/instruments/${instrument.instrument_id}`)
+              navigate(`/owner/instruments/${instrument.instrument_id}`)
             }
           />
         )}
