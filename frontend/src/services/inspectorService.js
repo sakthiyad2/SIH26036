@@ -67,7 +67,28 @@ const inspectorService = {
       return api.get(
         "/inspector/history"
       );
-    }
+    },
+
+  // ----------------------------------------------------------
+  // START INSPECTION
+  // ----------------------------------------------------------
+
+  startInspection: async (id) => {
+    return api.patch(
+      `/inspector/${id}/start`
+    );
+  },
+
+  // ----------------------------------------------------------
+  // COMPLETE INSPECTION
+  // ----------------------------------------------------------
+
+  completeInspection: async (id, data) => {
+    return api.patch(
+      `/inspector/${id}/complete`,
+      data
+    );
+  }
 
 };
 

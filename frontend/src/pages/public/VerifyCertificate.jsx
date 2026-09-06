@@ -17,7 +17,7 @@ function VerifyCertificate() {
     }
 
     navigate(
-      `/certificate/${certificateNumber}`
+      `/certificate/${encodeURIComponent(certificateNumber.trim())}`
     );
   };
 

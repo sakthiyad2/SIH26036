@@ -1,558 +1,183 @@
 /* =========================================================
-   SIH26036 - ABOUT PAGE
-   ADVANCED GLASSMORPHISM DESIGN
-   ========================================================= */
-
-
-/* =========================================================
-   PAGE CONTAINER
+   ABOUT PAGE
+   Professional Government Website Theme
    ========================================================= */
 
 .public-page {
-  position: relative;
-
   width: 100%;
-  min-height: calc(100vh - 70px);
-
-  padding: 90px 8% 100px;
-
-  overflow: hidden;
-
-  background:
-    radial-gradient(
-      circle at 10% 20%,
-      rgba(37, 99, 235, 0.18),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 90% 75%,
-      rgba(6, 182, 212, 0.13),
-      transparent 35%
-    );
+  min-height: calc(100vh - 80px);
+  background: #f5f7fa;
+  color: #172033;
 }
 
-
-/* =========================================================
-   BACKGROUND GLOW - TOP LEFT
-   ========================================================= */
-
-.public-page::before {
-  content: "";
-
-  position: absolute;
-
-  width: 400px;
-  height: 400px;
-
-  top: -180px;
-  left: -180px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(37, 99, 235, 0.18);
-
-  filter: blur(80px);
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   BACKGROUND GLOW - BOTTOM RIGHT
-   ========================================================= */
-
-.public-page::after {
-  content: "";
-
-  position: absolute;
-
-  width: 450px;
-  height: 450px;
-
-  right: -220px;
-  bottom: -200px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(6, 182, 212, 0.14);
-
-  filter: blur(90px);
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   MAIN GLASS CARD
-   ========================================================= */
+/* Main content container */
 
 .content-section {
-  position: relative;
+  width: min(1000px, 90%);
+  margin: 45px auto 70px;
+  padding: 50px 60px;
 
-  z-index: 2;
+  background: #ffffff;
 
-  width: 100%;
-  max-width: 1100px;
-
-  margin: 0 auto;
-
-  padding: 50px;
-
-  border-radius: 28px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.09),
-      rgba(255, 255, 255, 0.025)
-    );
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.12);
-
-  backdrop-filter:
-    blur(25px);
-
-  -webkit-backdrop-filter:
-    blur(25px);
-
-  box-shadow:
-    0 30px 80px
-    rgba(0, 0, 0, 0.28);
-
-  overflow: hidden;
-}
-
-
-/* =========================================================
-   CARD INNER LIGHT
-   ========================================================= */
-
-.content-section::before {
-  content: "";
-
-  position: absolute;
-
-  width: 250px;
-  height: 250px;
-
-  top: -130px;
-  right: -100px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(59, 130, 246, 0.12);
-
-  filter: blur(45px);
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   TOP ACCENT LINE
-   ========================================================= */
-
-.content-section::after {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 3px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      #38bdf8,
-      #2563eb,
-      transparent
-    );
-
-  opacity: 0.8;
-}
-
-
-/* =========================================================
-   MAIN HEADING
-   ========================================================= */
-
-.content-section h1 {
-  position: relative;
-
-  margin-bottom: 25px;
-
-  font-size:
-    clamp(40px, 5vw, 62px);
-
-  font-weight: 850;
-
-  line-height: 1.05;
-
-  letter-spacing: -0.045em;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff 20%,
-      #dbeafe 55%,
-      #67e8f9 100%
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-}
-
-
-/* =========================================================
-   DESCRIPTION PARAGRAPHS
-   ========================================================= */
-
-.content-section p {
-  position: relative;
-
-  max-width: 900px;
-
-  margin-bottom: 15px;
-
-  color: #b7c5d8;
-
-  font-size: 17px;
-
-  line-height: 1.8;
-
-  letter-spacing: 0.01em;
-}
-
-
-/* =========================================================
-   OBJECTIVES HEADING
-   ========================================================= */
-
-.content-section h2 {
-  position: relative;
-
-  margin-top: 45px;
-
-  margin-bottom: 25px;
-
-  padding-bottom: 14px;
-
-  color: #f8fafc;
-
-  font-size: 30px;
-
-  font-weight: 800;
-
-  letter-spacing: -0.025em;
-}
-
-
-/* Small blue line below Objectives */
-
-.content-section h2::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: 0;
-
-  width: 55px;
-  height: 3px;
-
+  border: 1px solid #dce3ec;
   border-radius: 10px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #38bdf8,
-      #2563eb
-    );
+  box-shadow: 0 4px 18px rgba(15, 35, 65, 0.06);
 }
 
+/* Page heading */
 
-/* =========================================================
-   OBJECTIVES LIST
-   ========================================================= */
+.content-section h1 {
+  margin: 0 0 20px;
+
+  color: #102a56;
+
+  font-size: 38px;
+  line-height: 1.2;
+  font-weight: 700;
+
+  border-left: 5px solid #155eef;
+  padding-left: 16px;
+}
+
+/* Paragraphs */
+
+.content-section p {
+  margin: 0 0 20px;
+
+  color: #53657b;
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+/* Objectives heading */
+
+.content-section h2 {
+  margin: 38px 0 20px;
+
+  color: #17365f;
+
+  font-size: 26px;
+  font-weight: 700;
+
+  padding-bottom: 12px;
+
+  border-bottom: 1px solid #dce3ec;
+}
+
+/* Objectives list */
 
 .content-section ul {
-  display: grid;
+  margin: 0;
+  padding: 0;
 
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+  list-style: none;
 
-  gap: 15px;
-
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
 }
-
-
-/* =========================================================
-   OBJECTIVE ITEM
-   ========================================================= */
 
 .content-section li {
   position: relative;
 
-  min-height: 75px;
+  padding: 15px 18px 15px 48px;
 
-  display: flex;
+  background: #f7f9fc;
 
-  align-items: center;
+  border: 1px solid #e1e7ef;
+  border-radius: 7px;
 
-  padding: 18px 20px 18px 58px;
+  color: #35465c;
 
-  border-radius: 16px;
-
-  color: #cbd5e1;
-
-  font-size: 15px;
-
+  font-size: 16px;
   line-height: 1.5;
 
-  background:
-    rgba(255, 255, 255, 0.045);
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.08);
-
-  backdrop-filter:
-    blur(12px);
-
-  -webkit-backdrop-filter:
-    blur(12px);
-
   transition:
-    transform 0.3s ease,
-    background 0.3s ease,
-    border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-
-/* =========================================================
-   OBJECTIVE NUMBER / CHECK
-   ========================================================= */
+/* Check icon */
 
 .content-section li::before {
   content: "✓";
 
   position: absolute;
-
   left: 18px;
+  top: 50%;
 
-  width: 27px;
-  height: 27px;
+  transform: translateY(-50%);
+
+  width: 22px;
+  height: 22px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
+  background: #e8f1ff;
+  color: #155eef;
+
   border-radius: 50%;
 
-  background:
-    rgba(37, 99, 235, 0.16);
-
-  border:
-    1px solid
-    rgba(56, 189, 248, 0.25);
-
-  color: #38bdf8;
-
   font-size: 13px;
-
-  font-weight: 900;
-
-  box-shadow:
-    0 5px 15px
-    rgba(37, 99, 235, 0.15);
+  font-weight: 700;
 }
-
-
-/* =========================================================
-   OBJECTIVE HOVER
-   ========================================================= */
 
 .content-section li:hover {
-  transform:
-    translateY(-5px);
-
-  background:
-    rgba(59, 130, 246, 0.08);
-
-  border-color:
-    rgba(56, 189, 248, 0.25);
-
-  box-shadow:
-    0 15px 35px
-    rgba(0, 0, 0, 0.18);
+  background: #f1f6ff;
+  border-color: #c5d7f5;
+  transform: translateX(3px);
 }
-
-
-/* =========================================================
-   OBJECTIVE CHECK HOVER
-   ========================================================= */
-
-.content-section li:hover::before {
-  background:
-    rgba(37, 99, 235, 0.25);
-
-  transform:
-    scale(1.08);
-}
-
-
-/* =========================================================
-   DESKTOP LARGE
-   ========================================================= */
-
-@media (min-width: 1400px) {
-
-  .public-page {
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-
-  .content-section {
-    max-width: 1200px;
-
-    padding: 60px;
-  }
-
-}
-
 
 /* =========================================================
    TABLET
    ========================================================= */
 
-@media (max-width: 900px) {
-
-  .public-page {
-    padding:
-      70px 30px 80px;
-  }
-
+@media (max-width: 700px) {
   .content-section {
-    padding: 40px;
+    width: 88%;
+    padding: 35px 28px;
+    margin-top: 30px;
   }
 
-  .content-section ul {
-    grid-template-columns: 1fr;
+  .content-section h1 {
+    font-size: 30px;
   }
 
+  .content-section h2 {
+    font-size: 23px;
+  }
+
+  .content-section p {
+    font-size: 16px;
+  }
 }
-
 
 /* =========================================================
    MOBILE
    ========================================================= */
 
-@media (max-width: 600px) {
-
-  .public-page {
-    min-height: calc(100vh - 64px);
-
-    padding:
-      45px 16px 60px;
-  }
-
-
+@media (max-width: 480px) {
   .content-section {
-    padding: 30px 22px;
-
-    border-radius: 22px;
+    width: 92%;
+    padding: 28px 20px;
   }
-
 
   .content-section h1 {
-    font-size: 38px;
-
-    line-height: 1.1;
+    font-size: 27px;
+    padding-left: 12px;
   }
-
-
-  .content-section p {
-    font-size: 15px;
-
-    line-height: 1.7;
-  }
-
 
   .content-section h2 {
-    margin-top: 35px;
-
-    font-size: 27px;
+    font-size: 21px;
   }
-
-
-  .content-section ul {
-    gap: 12px;
-  }
-
 
   .content-section li {
-    min-height: 70px;
-
-    padding:
-      16px 16px 16px 55px;
-
-    font-size: 14px;
+    font-size: 15px;
+    padding-left: 43px;
   }
-
-}
-
-
-/* =========================================================
-   VERY SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 400px) {
-
-  .public-page {
-    padding:
-      35px 12px 50px;
-  }
-
-
-  .content-section {
-    padding: 25px 18px;
-  }
-
-
-  .content-section h1 {
-    font-size: 33px;
-  }
-
-
-  .content-section p {
-    font-size: 14px;
-  }
-
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .content-section li {
-    transition: none;
-  }
-
 }

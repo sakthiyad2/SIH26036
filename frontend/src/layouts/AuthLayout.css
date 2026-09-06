@@ -1,81 +1,152 @@
+/* =========================================================
+   AUTH LAYOUT
+   Professional Government Portal Theme
+   ========================================================= */
+
 .auth-layout {
-  min-height: calc(100vh - 70px);
-  display: grid;
-  place-items: center;
-  padding: 110px 20px 50px;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fafc 0%,
+      #eef4f8 50%,
+      #ffffff 100%
+    );
+
+  color: #172033;
 }
 
-.auth-page {
-  width: min(100%, 460px);
-  padding: 34px;
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 16px;
-  background: rgba(12, 30, 50, 0.78);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(18px);
+/* Prevent horizontal overflow */
+
+.auth-layout,
+.auth-layout * {
+  box-sizing: border-box;
 }
 
-.auth-page h2 {
-  margin: 0;
-  color: #f8fafc;
-  font-size: 30px;
+/* Common authentication card */
+
+.auth-layout .auth-card,
+.auth-layout .login-card,
+.auth-layout .register-card,
+.auth-layout form {
+  width: 100%;
 }
 
-.auth-page > p {
-  margin: 8px 0 24px;
-  color: #94a3b8;
+/* If login/register pages have their own card */
+
+.auth-layout .auth-card {
+  max-width: 480px;
+
+  padding: 36px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce3ea;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
-.auth-page form {
-  display: grid;
-  gap: 16px;
+/* Headings */
+
+.auth-layout h1,
+.auth-layout h2 {
+  color: #102a43;
+
+  margin-top: 0;
+
+  font-weight: 750;
+
+  letter-spacing: -0.02em;
 }
 
-.input-group {
-  display: grid;
-  gap: 7px;
+.auth-layout p {
+  color: #607080;
+
+  line-height: 1.6;
 }
 
-.input-group label {
-  color: #cbd5e1;
+/* Inputs */
+
+.auth-layout input,
+.auth-layout select,
+.auth-layout textarea {
+  width: 100%;
+
+  min-height: 44px;
+
+  padding: 10px 13px;
+
+  border: 1px solid #cbd5df;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  color: #172033;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.auth-layout input:focus,
+.auth-layout select:focus,
+.auth-layout textarea:focus {
+  outline: none;
+
+  border-color: #1769aa;
+
+  box-shadow:
+    0 0 0 3px rgba(23, 105, 170, 0.10);
+}
+
+/* Labels */
+
+.auth-layout label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #263648;
+
   font-size: 13px;
-  font-weight: 600;
+
+  font-weight: 650;
 }
 
-.input-group input {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #f8fafc;
-}
+/* Buttons */
 
-.auth-page .btn {
-  width: 100%;
-  margin-top: 4px;
-  padding: 12px 18px;
-  border-radius: 8px;
+.auth-layout button {
+  font-family: inherit;
+
   cursor: pointer;
 }
 
-.auth-links {
-  margin-top: 22px;
-  color: #94a3b8;
-  font-size: 14px;
-  text-align: center;
-}
+/* Responsive */
 
-.auth-links p {
-  margin: 0;
-}
+@media (max-width: 600px) {
+  .auth-layout {
+    padding: 20px 14px;
+  }
 
-.auth-links a {
-  color: #67e8f9;
-}
-
-@media (max-width: 480px) {
-  .auth-page {
-    padding: 26px 20px;
+  .auth-layout .auth-card {
+    padding: 25px 20px;
   }
 }

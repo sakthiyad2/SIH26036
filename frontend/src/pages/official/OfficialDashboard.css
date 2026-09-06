@@ -1,0 +1,180 @@
+.official-dashboard .official-stat-card {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.official-dashboard .page-header {
+  padding: 24px 30px;
+  margin-bottom: 18px;
+}
+
+.official-dashboard .page-header h1 {
+  font-size: clamp(28px, 2.8vw, 36px);
+}
+
+.official-dashboard .page-header p {
+  font-size: 13px;
+}
+
+.official-dashboard .official-summary-grid {
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.official-dashboard .official-stat-card.warning {
+  border-top: 3px solid #d97706;
+}
+
+.official-dashboard .official-stat-card.info {
+  border-top: 3px solid #0369a1;
+}
+
+.official-dashboard .official-stat-card.success {
+  border-top: 3px solid #15803d;
+}
+
+.official-dashboard .official-table-card {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: visible;
+  border-radius: 12px;
+}
+
+.official-dashboard .official-table-card .data-table {
+  min-width: 1080px;
+  table-layout: fixed;
+}
+
+.official-dashboard .official-table-card th,
+.official-dashboard .official-table-card td {
+  overflow-wrap: anywhere;
+}
+
+.official-dashboard .official-table-card th {
+  white-space: normal;
+  line-height: 1.25;
+}
+
+.official-dashboard .official-table-card thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 52px;
+  vertical-align: middle;
+}
+
+.official-dashboard .official-table-card tbody tr {
+  min-height: 76px;
+}
+
+.official-dashboard .official-table-card tbody tr:nth-child(even) td {
+  background: #fbfdff;
+}
+
+.official-dashboard .official-table-card tbody tr:hover td {
+  background: #f0f7ff;
+}
+
+.official-dashboard .official-table-card th:nth-child(1),
+.official-dashboard .official-table-card td:nth-child(1) { width: 120px; }
+
+.official-dashboard .official-table-card th:nth-child(2),
+.official-dashboard .official-table-card td:nth-child(2) { width: 115px; }
+
+.official-dashboard .official-table-card th:nth-child(3),
+.official-dashboard .official-table-card td:nth-child(3) { width: 135px; }
+
+.official-dashboard .official-table-card th:nth-child(4),
+.official-dashboard .official-table-card td:nth-child(4) { width: 105px; }
+
+.official-dashboard .official-table-card th:nth-child(5),
+.official-dashboard .official-table-card td:nth-child(5) { width: 165px; }
+
+.official-dashboard .official-table-card th:nth-child(6),
+.official-dashboard .official-table-card td:nth-child(6) { width: 155px; }
+
+.official-dashboard .official-table-card th:nth-child(7),
+.official-dashboard .official-table-card td:nth-child(7) { width: 105px; }
+
+.official-dashboard .official-table-card th:last-child,
+.official-dashboard .official-table-card td:last-child {
+  position: sticky;
+  right: 0;
+  z-index: 2;
+  width: 145px;
+  min-width: 145px;
+  background: #ffffff;
+  box-shadow: -8px 0 12px rgba(15, 23, 42, 0.06);
+}
+
+.official-dashboard .official-table-card th:last-child {
+  z-index: 3;
+  background: #f4f7fa;
+}
+
+.official-dashboard .official-table-card td:last-child {
+  vertical-align: top;
+}
+
+.official-dashboard .row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  min-width: 130px;
+}
+
+.official-dashboard .row-actions .dashboard-cta {
+  min-height: 34px;
+  padding: 7px 11px;
+  white-space: nowrap;
+}
+
+.official-dashboard .assignment-picker {
+  min-width: 130px;
+}
+
+.official-dashboard .assignment-picker-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.official-dashboard .submission-summary {
+  min-width: 190px;
+  line-height: 1.45;
+}
+
+.official-dashboard .submission-summary strong {
+  color: #174a7c;
+  font-size: 12px;
+}
+
+.official-dashboard .submission-summary small {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.official-dashboard .muted-text {
+  color: #94a3b8;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .official-dashboard .page-header {
+    padding: 22px 20px;
+  }
+
+  .official-dashboard .page-header h1 {
+    font-size: 28px;
+  }
+
+  .official-dashboard .official-table-card .data-table {
+    min-width: 1080px;
+  }
+}

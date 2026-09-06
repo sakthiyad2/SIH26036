@@ -14,8 +14,6 @@ function InstrumentForm({
       initialData.manufacturer || "",
     model_number:
       initialData.model_number || "",
-    serial_number:
-      initialData.serial_number || "",
     capacity:
       initialData.capacity || "",
     unit:
@@ -70,15 +68,6 @@ function InstrumentForm({
         value={formData.model_number}
         onChange={handleChange}
         placeholder="Enter model number"
-      />
-
-      <Input
-        label="Serial Number"
-        name="serial_number"
-        value={formData.serial_number}
-        onChange={handleChange}
-        placeholder="Enter serial number"
-        required
       />
 
       <Input

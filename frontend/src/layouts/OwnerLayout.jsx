@@ -1,22 +1,12 @@
 import { Outlet } from "react-router-dom";
 
 import Navbar from "../components/navbar/Navbar";
-import Sidebar from "../components/sidebar/Sidebar";
 
 import "./OwnerLayout.css";
 
 function OwnerLayout() {
   return (
     <div className="dashboard-layout">
-
-      {/* =====================================================
-          SIDEBAR
-      ===================================================== */}
-
-      <aside className="dashboard-sidebar">
-        <Sidebar role="owner" />
-      </aside>
-
 
       {/* =====================================================
           MAIN AREA

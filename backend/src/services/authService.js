@@ -13,34 +13,8 @@ const { pool } = require("../config/database");
 // NORMALIZE REGISTRATION ROLE
 // ============================================================
 
-const normalizeRegistrationRole = (role) => {
-  const value =
-    String(role || "")
-      .trim()
-      .toLowerCase();
-
-  if (value === "owner") {
-    return "OWNER";
-  }
-
-  if (value === "official") {
-    return "OFFICIAL";
-  }
-
-  if (value === "inspector") {
-    return "INSPECTOR";
-  }
-
-  // ADMIN should not be publicly registered
-  if (value === "admin") {
-    throw new Error(
-      "Admin accounts cannot be created through public registration"
-    );
-  }
-
-  throw new Error(
-    "Invalid registration role"
-  );
+const normalizeRegistrationRole = () => {
+  return "OWNER";
 };
 
 // ============================================================
@@ -48,14 +22,9 @@ const normalizeRegistrationRole = (role) => {
 // ============================================================
 
 const registerUser = async (data) => {
-  if (
-    !data.name ||
-    !data.email ||
-    !data.password ||
-    !data.role
-  ) {
+  if (!data.name || !data.email || !data.password) {
     throw new Error(
-      "Name, email, password and role are required"
+      "Name, email and password are required"
     );
   }
 
@@ -63,10 +32,6 @@ const registerUser = async (data) => {
     data.email
       .trim()
       .toLowerCase();
-
-  // ----------------------------------------------------------
-  // CHECK EXISTING USER
-  // ----------------------------------------------------------
 
   const existing =
     await User.findByEmail(email);
@@ -77,14 +42,8 @@ const registerUser = async (data) => {
     );
   }
 
-  // ----------------------------------------------------------
-  // NORMALIZE ROLE
-  // ----------------------------------------------------------
-
   const role =
-    normalizeRegistrationRole(
-      data.role
-    );
+    normalizeRegistrationRole();
 
   // ----------------------------------------------------------
   // HASH PASSWORD
@@ -134,6 +93,19 @@ const registerUser = async (data) => {
         user.user_id,
         `OFF-${user.user_id}`,
         "Verification Officer"
+      ]
+    );
+  }
+
+  if (role === "OWNER") {
+    await pool.execute(
+      `INSERT INTO owners
+        (user_id, business_name, address_line1)
+       VALUES (?, ?, ?)` ,
+      [
+        user.user_id,
+        data.name.trim(),
+        data.address || null
       ]
     );
   }

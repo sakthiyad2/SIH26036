@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import "./Register.css";
 
 const API_URL =
@@ -8,13 +9,13 @@ const API_URL =
 
 function Register() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
-    role: "",
   });
 
   const [error, setError] = useState("");
@@ -58,8 +59,7 @@ function Register() {
       !formData.name.trim() ||
       !formData.email.trim() ||
       !formData.password ||
-      !formData.confirmPassword ||
-      !formData.role
+      !formData.confirmPassword
     ) {
       setError("Please fill in all fields.");
       return;
@@ -72,20 +72,6 @@ function Register() {
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
-      return;
-    }
-
-    /* =======================================================
-       IMPORTANT SECURITY CHECK
-
-       Public registration is NOT allowed to create ADMIN.
-
-      The frontend only allows OWNER, OFFICIAL or INSPECTOR.
-       The backend MUST also perform this validation.
-       ======================================================= */
-
-    if (!["OWNER", "OFFICIAL", "INSPECTOR"].includes(formData.role)) {
-      setError("Invalid registration role.");
       return;
     }
 
@@ -109,10 +95,6 @@ function Register() {
             name: formData.name.trim(),
             email: formData.email.trim().toLowerCase(),
             password: formData.password,
-
-            // IMPORTANT:
-            // Send MySQL ENUM-compatible value
-            role: formData.role,
           }),
         }
       );
@@ -159,22 +141,26 @@ function Register() {
          SUCCESS
          ===================================================== */
 
+      const user = data?.data?.user;
+      const token = data?.data?.token;
+
+      if (user && token) {
+        login(user, token);
+        navigate("/owner/dashboard", { replace: true });
+        return;
+      }
+
       setSuccess(
         data.message ||
           "Registration successful! Redirecting to login..."
       );
-
-      /* Clear form */
 
       setFormData({
         name: "",
         email: "",
         password: "",
         confirmPassword: "",
-        role: "",
       });
-
-      /* Redirect to login */
 
       setTimeout(() => {
         navigate("/login");
@@ -324,69 +310,6 @@ function Register() {
                 autoComplete="email"
                 required
               />
-
-            </div>
-
-
-            {/* =================================================
-                REGISTER AS
-                ================================================= */}
-
-            <div className="form-group">
-
-              <label
-                htmlFor="role"
-                className="form-label"
-              >
-                Register as
-              </label>
-
-              <div className="select-wrapper">
-
-                <select
-                  id="role"
-                  name="role"
-                  value={formData.role}
-                  onChange={handleChange}
-                  className={`form-select ${
-                    formData.role === ""
-                      ? "select-placeholder"
-                      : "select-selected"
-                  }`}
-                  required
-                >
-
-                  <option
-                    value=""
-                    disabled
-                  >
-                    Register as
-                  </option>
-
-                  {/* PUBLIC USER */}
-
-                  <option value="OWNER">
-                    Instrument Owner
-                  </option>
-
-                  {/* GOVERNMENT OFFICIAL */}
-
-                  <option value="OFFICIAL">
-                    Government Official
-                  </option>
-
-                  <option value="INSPECTOR">
-                    Inspector
-                  </option>
-
-                </select>
-
-              </div>
-
-              <span className="form-help">
-                Admin accounts can only be created or approved
-                by an authorized administrator.
-              </span>
 
             </div>
 

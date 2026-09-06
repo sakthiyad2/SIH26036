@@ -4,14 +4,14 @@ import useAuth from "../../hooks/useAuth";
 import { clearAuthStorage } from "../../utils/storage";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ onMenuToggle, menuOpen: controlledMenuOpen }) {
   const { user, logout } = useAuth();
 
   const navigate = useNavigate();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-
+  const isMenuOpen = controlledMenuOpen ?? menuOpen;
   /* =====================================================
      USER INFORMATION
   ===================================================== */
@@ -221,10 +221,10 @@ function Navbar() {
           <button
             type="button"
             className="navbar-menu-button"
-            onClick={() => setMenuOpen(!menuOpen)}
+            onClick={() => onMenuToggle ? onMenuToggle() : setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation menu"
           >
-            {menuOpen ? "✕" : "☰"}
+            {isMenuOpen ? "✕" : "☰"}
           </button>
 
 
@@ -262,7 +262,7 @@ function Navbar() {
 
         <div
           className={`navbar-menu ${
-            menuOpen ? "open" : ""
+            isMenuOpen ? "open" : ""
           }`}
         >
 

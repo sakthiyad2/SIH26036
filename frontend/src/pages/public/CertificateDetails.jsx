@@ -4,6 +4,20 @@ import CertificateViewer from "../../components/certificates/CertificateViewer";
 import QRCode from "../../components/certificates/QRCode";
 import Alert from "../../components/common/Alert";
 import certificateService from "../../services/certificateService";
+import "./CertificateDetails.css";
+
+const formatCertificateDate = (value) => {
+  if (!value) return "-";
+
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? value
+    : date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+};
 
 function CertificateDetails() {
   const { certificateNumber } = useParams();
@@ -24,7 +38,11 @@ function CertificateDetails() {
           return;
         }
 
-        setCertificate(result.certificate);
+        setCertificate({
+          ...result.certificate,
+          issued_date: formatCertificateDate(result.certificate.issued_date),
+          valid_until: formatCertificateDate(result.certificate.valid_until),
+        });
       } catch (requestError) {
         setError(
           requestError.response?.data?.message ||
@@ -48,7 +66,7 @@ function CertificateDetails() {
   }/certificate/${encodeURIComponent(certificateNumber || "")}`;
 
   return (
-    <div className="public-page">
+    <div className="public-page certificate-details-page">
       {loading && <p>Verifying certificate...</p>}
       {!loading && error && <Alert message={error} type="error" />}
 

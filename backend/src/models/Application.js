@@ -22,7 +22,7 @@ const Application = {
 
   async findById(id) {
     const [rows] = await pool.execute(
-      `SELECT a.*,
+      `SELECT DISTINCT a.*,
               o.business_name,
               i.instrument_name,
               i.serial_number
@@ -50,7 +50,10 @@ const Application = {
     const [rows] = await pool.execute(
       `SELECT a.*,
               i.instrument_name,
-              i.serial_number
+              i.serial_number,
+              i.installation_location,
+              i.city,
+              i.state
        FROM applications a
       LEFT JOIN instruments i ON a.instrument_id = i.instrument_id
        WHERE a.owner_id = ?
@@ -65,11 +68,26 @@ const Application = {
     const [rows] = await pool.execute(
       `SELECT a.*,
               o.business_name,
+              u.full_name AS owner_name,
               i.instrument_name,
-              i.serial_number
+              i.serial_number,
+              i.installation_location,
+              i.city,
+              i.state,
+              ins.inspection_id,
+              ins.scheduled_date,
+              ins.status AS inspection_status,
+              ir.result_status,
+              ir.inspector_comments,
+              ir.measurement_test_result,
+              ir.compliance_status,
+              ir.physical_condition
        FROM applications a
       LEFT JOIN owners o ON a.owner_id = o.owner_id
+      LEFT JOIN users u ON o.user_id = u.user_id
       LEFT JOIN instruments i ON a.instrument_id = i.instrument_id
+      LEFT JOIN inspections ins ON ins.application_id = a.application_id
+      LEFT JOIN inspection_results ir ON ir.inspection_id = ins.inspection_id
       ORDER BY a.application_id DESC`
     );
 

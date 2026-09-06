@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 
-function Sidebar({ role = "owner" }) {
+function Sidebar({ role = "owner", mobileOpen = false }) {
   const menus = {
     owner: [
       {
@@ -114,7 +114,7 @@ function Sidebar({ role = "owner" }) {
   const currentMenus = menus[role] || menus.owner;
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${mobileOpen ? "mobile-open" : ""}`}>
 
       {/* Logo / Brand */}
       <div className="sidebar-logo">

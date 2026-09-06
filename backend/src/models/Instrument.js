@@ -2,23 +2,49 @@ const { pool } = require("../config/database");
 
 const Instrument = {
   async create(data) {
+    const normalizedStatus = String(data.status || "PENDING_VERIFICATION").trim().toUpperCase();
+    const statusValue = ["REGISTERED", "PENDING_VERIFICATION", "VERIFIED", "EXPIRED", "REJECTED", "SUSPENDED"].includes(normalizedStatus)
+      ? normalizedStatus
+      : "PENDING_VERIFICATION";
+
     const [result] = await pool.execute(
       `INSERT INTO instruments
       (owner_id, instrument_type_id, instrument_name, serial_number,
-       description, installation_location, status, created_at)
-      VALUES (?, ?, ?, ?, ?, ?, ?, NOW())`,
+       manufacturer, model_number, capacity, unit, accuracy,
+       year_of_manufacture, purchase_date, installation_location,
+       city, state, status, created_at)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())`,
       [
         data.owner_id,
         data.instrument_type_id,
         data.instrument_name,
-        data.serial_number,
-        data.description || "",
-        data.location || "",
-        (data.status || "PENDING_VERIFICATION").trim(),
+        data.serial_number ?? null,
+        data.manufacturer || null,
+        data.model_number || null,
+        data.capacity ?? null,
+        data.unit || null,
+        data.accuracy || null,
+        data.year_of_manufacture ?? null,
+        data.purchase_date || null,
+        data.location || data.location_address || "",
+        data.city || null,
+        data.state || null,
+        statusValue,
       ]
     );
 
     return this.findById(result.insertId);
+  },
+
+  async updateSerialNumber(id, serialNumber) {
+    await pool.execute(
+      `UPDATE instruments
+       SET serial_number = ?
+       WHERE instrument_id = ?`,
+      [serialNumber, id]
+    );
+
+    return this.findById(id);
   },
 
   async findById(id) {

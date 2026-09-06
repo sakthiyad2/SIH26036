@@ -1,136 +1,96 @@
-/* =========================================================
-   SIH26036 - e-Maap
-   GLOBAL CSS
-   Advanced Glassmorphism Theme
-   ========================================================= */
-
-
-/* =========================================================
-   ROOT VARIABLES
-   ========================================================= */
+/* ============================================================
+   e-Maap Global Base Styles
+   File: frontend/src/index.css
+   ============================================================ */
 
 :root {
+  --color-primary: #1d4ed8;
+  --color-primary-dark: #163ea8;
+  --color-primary-light: #eff6ff;
 
-  /* -------------------------------------------------------
-     FONT
-     ------------------------------------------------------- */
+  --color-navy: #102a43;
+  --color-deep-navy: #173f67;
+
+  --color-background: #f5f7fa;
+
+  --color-surface: #ffffff;
+  --color-surface-soft: #f8fafc;
+
+  --color-border: #dbe2ea;
+
+  --color-text: #172033;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+
+  --color-success: #15803d;
+  --color-success-bg: #ecfdf3;
+
+  --color-warning: #a16207;
+  --color-warning-bg: #fffbeb;
+
+  --color-danger: #b91c1c;
+  --color-danger-bg: #fef2f2;
+
+  --color-info: #0369a1;
+  --color-info-bg: #eff6ff;
+
+  --radius-sm: 6px;
+  --radius-md: 9px;
+  --radius-lg: 12px;
+
+  --shadow-sm:
+    0 2px 8px rgba(15, 23, 42, 0.06);
+
+  --shadow-md:
+    0 6px 18px rgba(15, 23, 42, 0.08);
+
+  --shadow-lg:
+    0 12px 30px rgba(15, 23, 42, 0.10);
+}
+
+
+/* ============================================================
+   GLOBAL RESET
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+
+  margin: 0;
+  padding: 0;
+}
+
+
+html {
+  min-width: 320px;
+
+  background: var(--color-background);
+
+  scroll-behavior: smooth;
+}
+
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+
+  margin: 0;
+
+  background: var(--color-background);
+
+  color: var(--color-text);
 
   font-family:
     Inter,
-    -apple-system,
-    BlinkMacSystemFont,
     "Segoe UI",
     Roboto,
-    Helvetica,
     Arial,
+    Helvetica,
     sans-serif;
 
+  line-height: 1.5;
 
-  /* -------------------------------------------------------
-     MAIN COLORS
-     ------------------------------------------------------- */
-
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-  --primary-light: #60a5fa;
-
-  --cyan: #22d3ee;
-  --cyan-dark: #0891b2;
-
-
-  /* -------------------------------------------------------
-     TEXT
-     ------------------------------------------------------- */
-
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-subtle: #64748b;
-
-
-  /* -------------------------------------------------------
-     BACKGROUNDS
-     ------------------------------------------------------- */
-
-  --background: #07111f;
-  --background-secondary: #0b1728;
-
-  --surface: rgba(255, 255, 255, 0.055);
-
-  --surface-hover: rgba(255, 255, 255, 0.085);
-
-
-  /* -------------------------------------------------------
-     GLASS
-     ------------------------------------------------------- */
-
-  --glass-background:
-    rgba(255, 255, 255, 0.055);
-
-  --glass-background-strong:
-    rgba(12, 30, 50, 0.78);
-
-  --glass-border:
-    rgba(255, 255, 255, 0.11);
-
-  --glass-border-light:
-    rgba(255, 255, 255, 0.16);
-
-
-  /* -------------------------------------------------------
-     STATUS COLORS
-     ------------------------------------------------------- */
-
-  --success: #34d399;
-  --danger: #f87171;
-  --warning: #fbbf24;
-  --info: #60a5fa;
-
-
-  /* -------------------------------------------------------
-     BORDER RADIUS
-     ------------------------------------------------------- */
-
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
-
-
-  /* -------------------------------------------------------
-     SHADOWS
-     ------------------------------------------------------- */
-
-  --shadow-sm:
-    0 8px 20px rgba(0, 0, 0, 0.16);
-
-  --shadow-md:
-    0 15px 35px rgba(0, 0, 0, 0.22);
-
-  --shadow-lg:
-    0 25px 60px rgba(0, 0, 0, 0.35);
-
-
-  /* -------------------------------------------------------
-     GLOW
-     ------------------------------------------------------- */
-
-  --blue-glow:
-    0 0 30px rgba(59, 130, 246, 0.18);
-
-  --cyan-glow:
-    0 0 30px rgba(34, 211, 238, 0.14);
-
-
-  /* -------------------------------------------------------
-     BROWSER
-     ------------------------------------------------------- */
-
-  color-scheme: dark;
-
-  font-synthesis: none;
-
-  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 
   -webkit-font-smoothing: antialiased;
 
@@ -138,625 +98,483 @@
 }
 
 
-/* =========================================================
-   RESET
-   ========================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-
-  box-sizing: border-box;
-}
-
-
-/* =========================================================
-   HTML
-   ========================================================= */
-
-html {
-  scroll-behavior: smooth;
-
-  min-width: 320px;
-
-  background:
-    #07111f;
-}
-
-
-/* =========================================================
-   BODY
-   ========================================================= */
-
-body {
-
-  min-width: 320px;
-
-  min-height: 100vh;
-
-  margin: 0;
-
-  background:
-    radial-gradient(
-      circle at 10% 10%,
-      rgba(37, 99, 235, 0.12),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 90% 85%,
-      rgba(6, 182, 212, 0.10),
-      transparent 30%
-    ),
-    #07111f;
-
-  color: var(--text-primary);
-
-  font-family: inherit;
-
-  line-height: 1.5;
-
-  overflow-x: hidden;
-}
-
-
-/* =========================================================
-   ROOT
-   ========================================================= */
-
 #root {
-
-  min-height: 100vh;
-
   width: 100%;
-
-  position: relative;
+  min-height: 100vh;
 }
 
 
-/* =========================================================
-   GLOBAL BACKGROUND GLOW
-   ========================================================= */
+/* ============================================================
+   ELEMENT DEFAULTS
+   ============================================================ */
 
-#root::before {
+img {
+  display: block;
 
-  content: "";
-
-  position: fixed;
-
-  width: 450px;
-  height: 450px;
-
-  top: -200px;
-  left: -180px;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(37, 99, 235, 0.13),
-      transparent 70%
-    );
-
-  filter: blur(50px);
-
-  pointer-events: none;
-
-  z-index: -1;
+  max-width: 100%;
 }
 
-
-#root::after {
-
-  content: "";
-
-  position: fixed;
-
-  width: 400px;
-  height: 400px;
-
-  right: -160px;
-  bottom: -150px;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(34, 211, 238, 0.10),
-      transparent 70%
-    );
-
-  filter: blur(50px);
-
-  pointer-events: none;
-
-  z-index: -1;
-}
-
-
-/* =========================================================
-   HEADINGS
-   ========================================================= */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-
-  margin: 0;
-
-  color: var(--text-primary);
-
-  line-height: 1.25;
-
-  font-weight: 750;
-}
-
-
-/* =========================================================
-   PARAGRAPH
-   ========================================================= */
-
-p {
-
-  margin: 0;
-
-  color: var(--text-secondary);
-}
-
-
-/* =========================================================
-   LINKS
-   ========================================================= */
 
 a {
-
   color: inherit;
 
   text-decoration: none;
-
-  transition:
-    color 0.2s ease;
 }
 
-
-a:hover {
-
-  text-decoration: none;
-}
-
-
-/* =========================================================
-   BUTTON
-   ========================================================= */
 
 button,
 input,
-textarea,
-select {
-
+select,
+textarea {
   font: inherit;
 }
 
 
 button {
-
   cursor: pointer;
-
-  border: none;
 }
 
 
-/* =========================================================
-   INPUT
-   ========================================================= */
-
-input,
-textarea,
-select {
-
-  outline: none;
-
-  color: var(--text-primary);
+button:disabled {
+  cursor: not-allowed;
 }
 
 
-/* =========================================================
-   IMAGE
-   ========================================================= */
+/* ============================================================
+   GLOBAL PAGE BACKGROUND
+   ============================================================ */
 
-img {
-
-  display: block;
-
-  max-width: 100%;
-
-  height: auto;
+.page,
+.dashboard-page,
+.public-page,
+.auth-page,
+.owner-dashboard,
+.page-container,
+.home {
+  background: transparent;
 }
 
 
-/* =========================================================
-   LIST
-   ========================================================= */
+/* ============================================================
+   GLOBAL SURFACE
+   ============================================================ */
 
-ul,
-ol {
+.page-header,
+.card,
+.panel,
+.info-card,
+.form-card,
+.empty-state,
+.table-wrapper {
+  background: var(--color-surface);
 
-  list-style: none;
+  border: 1px solid var(--color-border);
 
-  margin: 0;
+  border-radius: var(--radius-lg);
 
-  padding: 0;
+  box-shadow: var(--shadow-sm);
 }
 
 
-/* =========================================================
-   TABLE
-   ========================================================= */
-
-table {
-
-  width: 100%;
-
-  border-spacing: 0;
-}
-
-
-/* =========================================================
-   GLASS UTILITY
-   ========================================================= */
-
-.glass {
-
-  background:
-    var(--glass-background);
-
-  border:
-    1px solid var(--glass-border);
-
-  backdrop-filter:
-    blur(20px);
-
-  -webkit-backdrop-filter:
-    blur(20px);
-
-  box-shadow:
-    var(--shadow-sm);
-}
-
-
-/* =========================================================
-   GLASS STRONG
-   ========================================================= */
-
-.glass-strong {
-
-  background:
-    var(--glass-background-strong);
-
-  border:
-    1px solid var(--glass-border);
-
-  backdrop-filter:
-    blur(25px);
-
-  -webkit-backdrop-filter:
-    blur(25px);
-
-  box-shadow:
-    var(--shadow-md);
-}
-
-
-/* =========================================================
-   TEXT COLORS
-   ========================================================= */
-
-.text-primary {
-
-  color:
-    var(--text-primary);
-}
-
-
-.text-secondary {
-
-  color:
-    var(--text-secondary);
-}
-
-
-.text-muted {
-
-  color:
-    var(--text-muted);
-}
-
-
-.text-subtle {
-
-  color:
-    var(--text-subtle);
-}
-
-
-.text-success {
-
-  color:
-    var(--success);
-}
-
-
-.text-danger {
-
-  color:
-    var(--danger);
-}
-
-
-.text-warning {
-
-  color:
-    var(--warning);
-}
-
-
-.text-info {
-
-  color:
-    var(--info);
-}
-
-
-/* =========================================================
-   DISPLAY UTILITIES
-   ========================================================= */
-
-.flex {
-
-  display: flex;
-}
-
-
-.flex-column {
-
-  display: flex;
-
-  flex-direction: column;
-}
-
-
-.align-center {
-
-  align-items: center;
-}
-
-
-.justify-center {
-
-  justify-content: center;
-}
-
-
-.justify-between {
-
-  justify-content: space-between;
-}
-
-
-/* =========================================================
-   GAP
-   ========================================================= */
-
-.gap-sm {
-
-  gap: 8px;
-}
-
-
-.gap-md {
-
-  gap: 16px;
-}
-
-
-.gap-lg {
-
-  gap: 24px;
-}
-
-
-.gap-xl {
-
-  gap: 32px;
-}
-
-
-/* =========================================================
-   WIDTH
-   ========================================================= */
-
-.w-full {
-
-  width: 100%;
-}
-
-
-/* =========================================================
-   MARGIN
-   ========================================================= */
-
-.mt-sm {
-
-  margin-top: 8px;
-}
-
-
-.mt-md {
-
-  margin-top: 16px;
-}
-
-
-.mt-lg {
-
-  margin-top: 24px;
-}
-
-
-.mb-sm {
-
-  margin-bottom: 8px;
-}
-
-
-.mb-md {
-
-  margin-bottom: 16px;
-}
-
-
-.mb-lg {
+/* ============================================================
+   PAGE HEADER
+   ============================================================ */
+
+.page-header {
+  padding: 22px 24px;
 
   margin-bottom: 24px;
 }
 
 
-/* =========================================================
-   TEXT ALIGNMENT
-   ========================================================= */
+/* ============================================================
+   ALERTS
+   ============================================================ */
 
-.text-center {
+.alert {
+  padding: 12px 14px;
 
-  text-align: center;
+  margin-bottom: 18px;
+
+  background: var(--color-surface-soft);
+
+  border: 1px solid var(--color-border);
+
+  border-radius: var(--radius-md);
+
+  font-size: 0.92rem;
+}
+
+.alert-success {
+  background: var(--color-success-bg);
+
+  border-color: rgba(21, 128, 61, 0.20);
+
+  color: var(--color-success);
+}
+
+.alert-error {
+  background: var(--color-danger-bg);
+
+  border-color: rgba(185, 28, 28, 0.20);
+
+  color: var(--color-danger);
+}
+
+.alert-warning {
+  background: var(--color-warning-bg);
+
+  border-color: rgba(161, 98, 7, 0.20);
+
+  color: var(--color-warning);
+}
+
+.alert-info {
+  background: var(--color-info-bg);
+
+  border-color: rgba(3, 105, 161, 0.20);
+
+  color: var(--color-info);
 }
 
 
-.text-left {
+/* ============================================================
+   FORM DEFAULTS
+   ============================================================ */
+
+.input-group {
+  display: grid;
+
+  gap: 8px;
+}
+
+
+.input-group label,
+.form-label {
+  color: var(--color-text);
+
+  font-size: 0.9rem;
+
+  font-weight: 600;
+}
+
+
+.input-group input,
+.input-group select,
+.input-group textarea,
+form input,
+form select,
+form textarea {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  background: #ffffff;
+
+  color: var(--color-text);
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 9px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus,
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: var(--color-primary);
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+
+.input-group textarea,
+form textarea {
+  min-height: 120px;
+
+  resize: vertical;
+}
+
+
+input::placeholder,
+textarea::placeholder {
+  color: #94a3b8;
+}
+
+
+select option {
+  background: #ffffff;
+
+  color: var(--color-text);
+}
+
+
+/* ============================================================
+   BUTTON DEFAULTS
+   ============================================================ */
+
+.btn,
+.dashboard-cta,
+.primary-btn,
+button[type="submit"] {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 11px 18px;
+
+  border-radius: 9px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.15s ease;
+}
+
+
+.btn-primary,
+.dashboard-cta,
+.primary-btn,
+button[type="submit"] {
+  background: var(--color-primary);
+
+  color: #ffffff;
+
+  border: 1px solid var(--color-primary);
+
+  box-shadow:
+    0 4px 10px rgba(37, 99, 235, 0.12);
+}
+
+
+.btn-primary:hover,
+.dashboard-cta:hover,
+.primary-btn:hover,
+button[type="submit"]:hover {
+  background: var(--color-primary-dark);
+
+  border-color: var(--color-primary-dark);
+}
+
+
+.btn-secondary,
+.dashboard-cta.secondary {
+  background: #ffffff;
+
+  color: var(--color-text);
+
+  border: 1px solid var(--color-border);
+}
+
+
+.btn-secondary:hover,
+.dashboard-cta.secondary:hover {
+  background: #f8fafc;
+
+  border-color: #94a3b8;
+}
+
+
+.btn-danger,
+.dashboard-cta.danger {
+  background: #ffffff;
+
+  color: var(--color-danger);
+
+  border: 1px solid #fca5a5;
+}
+
+
+.btn-danger:hover,
+.dashboard-cta.danger:hover {
+  background: var(--color-danger-bg);
+}
+
+
+/* ============================================================
+   STATUS
+   ============================================================ */
+
+.status {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 92px;
+
+  padding: 5px 10px;
+
+  border-radius: 999px;
+
+  font-size: 0.72rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.02em;
+
+  text-transform: uppercase;
+
+  border: 1px solid transparent;
+}
+
+
+/* PENDING */
+
+.status-pending,
+.status-submitted,
+.status-assigned,
+.status-in_progress,
+.status-scheduled,
+.status-under_review,
+.status-active,
+.status-registered {
+  background: var(--color-warning-bg);
+
+  color: var(--color-warning);
+
+  border-color: rgba(161, 98, 7, 0.20);
+}
+
+
+/* APPROVED */
+
+.status-approved,
+.status-verified,
+.status-success,
+.status-pass,
+.status-completed {
+  background: var(--color-success-bg);
+
+  color: var(--color-success);
+
+  border-color: rgba(21, 128, 61, 0.20);
+}
+
+
+/* REJECTED */
+
+.status-rejected,
+.status-failed,
+.status-danger {
+  background: var(--color-danger-bg);
+
+  color: var(--color-danger);
+
+  border-color: rgba(185, 28, 28, 0.20);
+}
+
+
+/* INFORMATION */
+
+.status-inspection_completed {
+  background: var(--color-info-bg);
+
+  color: var(--color-info);
+
+  border-color: rgba(3, 105, 161, 0.20);
+}
+
+
+/* ============================================================
+   DATA TABLE
+   ============================================================ */
+
+.data-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  background: transparent;
+}
+
+
+.data-table th {
+  padding: 13px 14px;
+
+  background: #f8fafc;
+
+  color: var(--color-text-secondary);
+
+  border-bottom: 1px solid var(--color-border);
+
+  font-size: 0.74rem;
+
+  font-weight: 750;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
 
   text-align: left;
 }
 
 
-.text-right {
+.data-table td {
+  padding: 14px;
 
-  text-align: right;
+  background: #ffffff;
+
+  color: var(--color-text);
+
+  border-bottom: 1px solid var(--color-border);
+
+  font-size: 14px;
 }
 
 
-/* =========================================================
-   HIDDEN
-   ========================================================= */
-
-.hidden {
-
-  display: none !important;
+.data-table tr:hover td {
+  background: #f8fbff;
 }
 
 
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
-
-::-webkit-scrollbar {
-
-  width: 7px;
-
-  height: 7px;
+.table-wrapper {
+  overflow-x: auto;
 }
 
 
-::-webkit-scrollbar-track {
+/* ============================================================
+   SECTION TITLE
+   ============================================================ */
 
-  background:
-    #07111f;
+.section-title {
+  margin: 0 0 18px;
+
+  color: var(--color-navy);
+
+  font-size: 21px;
+
+  font-weight: 700;
 }
 
 
-::-webkit-scrollbar-thumb {
-
-  background:
-    rgba(96, 165, 250, 0.25);
-
-  border-radius:
-    10px;
-}
-
-
-::-webkit-scrollbar-thumb:hover {
-
-  background:
-    rgba(96, 165, 250, 0.40);
-}
-
-
-/* =========================================================
-   TEXT SELECTION
-   ========================================================= */
-
-::selection {
-
-  background:
-    rgba(59, 130, 246, 0.35);
-
-  color:
-    #ffffff;
-}
-
-
-/* =========================================================
-   FOCUS ACCESSIBILITY
-   ========================================================= */
-
-:focus-visible {
-
-  outline:
-    2px solid #60a5fa;
-
-  outline-offset:
-    3px;
-}
-
-
-/* =========================================================
+/* ============================================================
    RESPONSIVE
-   ========================================================= */
+   ============================================================ */
 
 @media (max-width: 768px) {
 
-  body {
-
-    font-size: 14px;
+  .page-container,
+  .page,
+  .dashboard-page {
+    padding: 18px 14px 26px;
   }
 
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  html {
-
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-
-    animation-duration:
-      0.01ms !important;
-
-    animation-iteration-count:
-      1 !important;
-
-    transition-duration:
-      0.01ms !important;
-  }
 }

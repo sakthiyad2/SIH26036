@@ -28,9 +28,8 @@ api.interceptors.request.use(
   (config) => {
 
     const token =
-      localStorage.getItem(
-        "token"
-      );
+      localStorage.getItem("token") ||
+      localStorage.getItem("authToken");
 
     if (token) {
 
@@ -69,13 +68,10 @@ api.interceptors.response.use(
         "Authentication expired or invalid."
       );
 
-      localStorage.removeItem(
-        "token"
-      );
-
-      localStorage.removeItem(
-        "user"
-      );
+      localStorage.removeItem("token");
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("user");
+      localStorage.removeItem("currentUser");
 
       // Don't force redirect here.
       // AuthContext will handle authentication state.

@@ -1,112 +1,243 @@
+/* =========================================================
+   PUBLIC LAYOUT
+   Government Website Theme
+   ========================================================= */
+
 .public-layout {
   min-height: 100vh;
-  background: transparent;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: #f6f8fa;
+
+  color: #172033;
 }
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
 
 .public-content {
-  min-height: calc(100vh - 70px);
-  padding-top: 70px;
+  flex: 1;
+
+  width: 100%;
+
+  min-height: 60vh;
 }
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 .public-footer {
-  padding: 48px 8% 22px;
-  border-top: 1px solid rgba(148, 163, 184, 0.14);
-  background: rgba(5, 15, 30, 0.72);
+  margin-top: auto;
+
+  background: #102a43;
+
+  color: #ffffff;
+
+  border-top: 4px solid #1769aa;
 }
 
+/* =========================================================
+   FOOTER CONTENT
+   ========================================================= */
+
 .footer-content {
-  display: grid;
-  grid-template-columns: 1.1fr 1.4fr 1fr;
-  gap: 48px;
-  max-width: 1240px;
+  max-width: 1200px;
+
   margin: 0 auto;
+
+  padding: 42px 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.2fr
+    1fr
+    1fr;
+
+  gap: 45px;
 }
+
+/* =========================================================
+   BRAND
+   ========================================================= */
 
 .footer-brand {
   display: flex;
-  align-items: flex-start;
+
+  align-items: center;
+
   gap: 14px;
 }
 
 .footer-logo {
-  font-size: 28px;
-  line-height: 1;
+  width: 48px;
+
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #102a43;
+
+  font-size: 22px;
 }
 
-.footer-brand h3,
-.footer-links h4 {
+.footer-brand h3 {
+  margin: 0 0 4px;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  font-weight: 750;
+}
+
+.footer-brand p {
   margin: 0;
-  color: #f8fafc;
+
+  color: #c8d4df;
+
+  font-size: 13px;
 }
 
-.footer-brand p,
-.footer-description p,
-.footer-bottom p {
-  margin: 8px 0 0;
-  color: #94a3b8;
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.footer-description {
+  display: flex;
+
+  align-items: center;
+}
+
+.footer-description p {
+  margin: 0;
+
+  max-width: 320px;
+
+  color: #c8d4df;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.footer-links h4 {
+  margin: 0 0 14px;
+
+  color: #ffffff;
+
   font-size: 14px;
-  line-height: 1.6;
+
+  font-weight: 700;
 }
 
 .footer-links > div {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-  margin-top: 14px;
+
+  flex-direction: column;
+
+  gap: 9px;
 }
 
 .footer-links a {
-  color: #cbd5e1;
-  font-size: 14px;
-  transition: color 0.2s ease;
+  width: fit-content;
+
+  color: #c8d4df;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .footer-links a:hover {
-  color: #67e8f9;
+  color: #ffffff;
+
+  transform: translateX(3px);
 }
 
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
 .footer-bottom {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 18px 30px;
+
   display: flex;
+
+  align-items: center;
+
   justify-content: space-between;
+
   gap: 20px;
-  max-width: 1240px;
-  margin: 38px auto 0;
-  padding-top: 18px;
-  border-top: 1px solid rgba(148, 163, 184, 0.12);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .footer-bottom p {
   margin: 0;
+
+  color: #aebdca;
+
   font-size: 12px;
 }
 
-@media (max-width: 768px) {
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 850px) {
   .footer-content {
     grid-template-columns: 1fr 1fr;
+
     gap: 30px;
   }
 
   .footer-description {
-    grid-column: 1 / -1;
+    display: none;
   }
 }
 
-@media (max-width: 480px) {
-  .public-footer {
-    padding: 36px 18px 20px;
-  }
-
+@media (max-width: 600px) {
   .footer-content {
     grid-template-columns: 1fr;
+
+    padding: 32px 20px;
   }
 
   .footer-description {
-    grid-column: auto;
+    display: block;
   }
 
   .footer-bottom {
     flex-direction: column;
-    gap: 8px;
-    margin-top: 28px;
+
+    align-items: flex-start;
+
+    padding: 16px 20px;
   }
 }

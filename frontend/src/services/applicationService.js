@@ -43,15 +43,23 @@ const applicationService = {
 
   assignInspector: async (
     id,
-    inspectorId
+    payload
   ) => {
     return api.patch(
       `/applications/${id}/assign`,
       {
-        inspector_id: inspectorId.inspector_id,
-        scheduled_date: inspectorId.scheduled_date,
-        scheduled_time: inspectorId.scheduled_time,
-        inspection_location: inspectorId.inspection_location
+        inspector_id:
+          payload?.inspector_id ??
+          payload?.inspectorId ??
+          null,
+        scheduled_date:
+          payload?.scheduled_date ?? null,
+        scheduled_time:
+          payload?.scheduled_time ?? null,
+        inspection_location:
+          payload?.inspection_location ??
+          payload?.location ??
+          null
       }
     );
   },

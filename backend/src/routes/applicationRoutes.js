@@ -10,11 +10,9 @@ const {
 } = require("../controllers/applicationController");
 
 const {
-  authenticate
+  authenticate,
+  authorizeRoles
 } = require("../middleware/authMiddleware");
-
-const authorizeRoles =
-  require("../middleware/roleMiddleware");
 
 const router = express.Router();
 
@@ -91,7 +89,8 @@ router.patch(
   authenticate,
   authorizeRoles(
     "ADMIN",
-    "INSPECTOR"
+    "INSPECTOR",
+    "OFFICIAL"
   ),
   updateApplicationStatus
 );

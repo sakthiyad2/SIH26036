@@ -1,519 +1,335 @@
 /* =========================================================
    OWNER DASHBOARD
-========================================================= */
+   ========================================================= */
 
 .owner-dashboard {
   width: 100%;
-  min-height: calc(100vh - 80px);
+  max-width: 1400px;
+  margin: 0 auto;
 
-  padding: 35px 40px 60px;
-
-  box-sizing: border-box;
-
-  color: #f5f8ff;
-
-  overflow-x: hidden;
+  color: #172033;
 }
 
 
 /* =========================================================
-   DASHBOARD HEADER
-========================================================= */
+   HEADER
+   ========================================================= */
 
 .owner-dashboard-header {
   width: 100%;
 
-  min-height: 210px;
-
-  padding: 38px 42px;
-
-  margin-bottom: 28px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 30px;
-
-  border: 1px solid rgba(120, 150, 190, 0.20);
-
-  border-radius: 22px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(13, 32, 58, 0.95),
-      rgba(10, 25, 45, 0.88)
-    );
+  padding: 42px 48px;
 
   box-sizing: border-box;
 
-  overflow: hidden;
+  background: #ffffff;
+
+  border: 1px solid #dbe5ee;
+
+  border-radius: 16px;
+
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+
+  margin-bottom: 28px;
 }
-
-
-.dashboard-header-content {
-  min-width: 0;
-}
-
 
 .dashboard-label,
 .section-label {
   display: block;
 
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+
+  color: #1769aa;
 
   font-size: 12px;
-
   font-weight: 800;
 
   letter-spacing: 1.5px;
 
-  color: #55c8ff;
+  text-transform: uppercase;
 }
 
-
 .owner-dashboard-header h1 {
-  margin: 0;
+  margin: 0 0 10px;
 
-  font-size: clamp(36px, 5vw, 56px);
+  color: #123b6d;
 
-  line-height: 1.05;
+  font-size: 42px;
+  line-height: 1.15;
 
   font-weight: 800;
 
-  color: #f5f8ff;
+  letter-spacing: -1px;
 }
-
 
 .owner-dashboard-header p {
-  max-width: 850px;
+  margin: 0;
 
-  margin: 14px 0 0;
+  color: #64748b;
 
-  font-size: 17px;
-
+  font-size: 16px;
   line-height: 1.6;
-
-  color: #aebdd1;
-}
-
-
-/* =========================================================
-   REFRESH BUTTON
-========================================================= */
-
-.dashboard-refresh-button {
-  flex-shrink: 0;
-
-  padding: 12px 18px;
-
-  border: 1px solid rgba(90, 190, 255, 0.35);
-
-  border-radius: 11px;
-
-  background: rgba(31, 100, 180, 0.18);
-
-  color: #68d4ff;
-
-  font-size: 14px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease,
-    border-color 0.2s ease;
-}
-
-
-.dashboard-refresh-button:hover:not(:disabled) {
-  background: rgba(31, 100, 180, 0.30);
-
-  border-color: rgba(90, 190, 255, 0.60);
-
-  transform: translateY(-2px);
-}
-
-
-.dashboard-refresh-button:disabled {
-  opacity: 0.6;
-
-  cursor: not-allowed;
 }
 
 
 /* =========================================================
    STATISTICS
-========================================================= */
+   ========================================================= */
 
 .owner-stats {
   width: 100%;
 
   display: grid;
 
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
   gap: 20px;
 
-  margin-bottom: 38px;
+  margin-bottom: 42px;
 }
 
-
-/* =========================================================
-   STAT CARD
-========================================================= */
-
 .owner-stat-card {
-  min-width: 0;
+  min-height: 135px;
 
-  min-height: 125px;
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
 
   padding: 24px;
 
-  display: flex;
-
-  align-items: center;
-
-  gap: 17px;
-
-  border: 1px solid rgba(120, 150, 190, 0.18);
-
-  border-radius: 20px;
-
-  background:
-    rgba(12, 26, 47, 0.82);
-
   box-sizing: border-box;
 
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
-}
+  background: #ffffff;
 
+  border: 1px solid #dbe5ee;
+
+  border-radius: 14px;
+
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
 .owner-stat-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
 
-  border-color:
-    rgba(70, 180, 255, 0.45);
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.20);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
 }
-
-
-.stat-link {
-  text-decoration: none;
-
-  color: inherit;
-}
-
 
 .stat-icon {
-  width: 54px;
-  height: 54px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
+  width: 58px;
+  height: 58px;
 
   flex-shrink: 0;
 
-  border: 1px solid
-    rgba(75, 155, 235, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  border-radius: 15px;
+  background: #edf5fc;
 
-  background:
-    rgba(38, 111, 210, 0.15);
+  border: 1px solid #d5e6f7;
 
-  font-size: 24px;
+  border-radius: 12px;
 
-  color: #69d2ff;
+  font-size: 25px;
 }
-
-
-.verified-icon {
-  color: #59d7ff;
-
-  font-size: 28px;
-}
-
-
-.certificate-icon {
-  font-size: 23px;
-}
-
-
-.stat-content {
-  min-width: 0;
-}
-
 
 .owner-stat-card span {
   display: block;
 
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 
-  font-size: 15px;
+  color: #64748b;
 
-  color: #aebdd1;
+  font-size: 12px;
+  font-weight: 750;
+
+  letter-spacing: 0.6px;
+
+  text-transform: uppercase;
 }
-
 
 .owner-stat-card strong {
   display: block;
 
-  font-size: 32px;
+  color: #123b6d;
 
+  font-size: 32px;
   line-height: 1;
 
-  color: #ffffff;
+  font-weight: 800;
 }
 
 
 /* =========================================================
    QUICK ACTIONS
-========================================================= */
+   ========================================================= */
 
 .quick-actions-section {
-  width: 100%;
-
-  margin-bottom: 38px;
+  margin-bottom: 42px;
 }
-
 
 .section-heading {
   margin-bottom: 20px;
 }
 
-
 .section-heading h2,
 .recent-header h2 {
-  margin: 0;
+  margin: 0 0 7px;
 
-  font-size: 27px;
+  color: #123b6d;
 
-  line-height: 1.2;
+  font-size: 25px;
 
-  color: #f5f8ff;
+  font-weight: 800;
 }
-
 
 .section-heading p {
-  margin: 7px 0 0;
+  margin: 0;
 
-  font-size: 15px;
+  color: #64748b;
 
-  color: #9eafc4;
+  font-size: 14px;
 }
 
-
-/* =========================================================
-   QUICK ACTION GRID
-========================================================= */
-
 .quick-actions-grid {
-  width: 100%;
-
   display: grid;
 
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   gap: 20px;
 }
 
-
-/* =========================================================
-   QUICK ACTION CARD
-========================================================= */
-
 .quick-action-card {
-  min-width: 0;
+  min-height: 190px;
 
   display: flex;
 
-  align-items: flex-start;
+  gap: 20px;
 
-  gap: 22px;
-
-  padding: 27px;
-
-  text-decoration: none;
-
-  border: 1px solid
-    rgba(120, 150, 190, 0.18);
-
-  border-radius: 20px;
-
-  background:
-    rgba(12, 26, 47, 0.82);
+  padding: 28px;
 
   box-sizing: border-box;
 
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease,
-    box-shadow 0.25s ease;
-}
+  background: #ffffff;
 
+  border: 1px solid #dbe5ee;
+
+  border-radius: 14px;
+
+  color: inherit;
+
+  text-decoration: none;
+
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
 .quick-action-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
 
-  border-color:
-    rgba(73, 190, 255, 0.50);
+  border-color: #b9d3eb;
 
-  background:
-    rgba(16, 37, 64, 0.95);
-
-  box-shadow:
-    0 18px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
 }
 
-
-/* =========================================================
-   PRIMARY ACTION
-========================================================= */
-
-.primary-action {
-  border-color:
-    rgba(46, 137, 255, 0.35);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(28, 79, 157, 0.30),
-      rgba(12, 42, 68, 0.82)
-    );
+.quick-action-card.primary-action {
+  border-left: 4px solid #1769aa;
 }
-
-
-/* =========================================================
-   ACTION ICON
-========================================================= */
 
 .quick-action-icon {
   width: 58px;
   height: 58px;
 
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
   flex-shrink: 0;
 
-  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  background:
-    rgba(44, 138, 235, 0.16);
+  background: #edf5fc;
 
-  font-size: 25px;
+  border: 1px solid #d5e6f7;
 
-  color: #65d2ff;
+  border-radius: 12px;
+
+  font-size: 24px;
 }
-
-
-/* =========================================================
-   ACTION CONTENT
-========================================================= */
-
-.quick-action-content {
-  min-width: 0;
-}
-
 
 .quick-action-content h3 {
   margin: 0 0 8px;
 
-  font-size: 20px;
+  color: #123b6d;
 
-  line-height: 1.3;
+  font-size: 18px;
 
-  color: #f3f7ff;
+  font-weight: 800;
 }
-
 
 .quick-action-content p {
-  margin: 0 0 14px;
+  margin: 0 0 15px;
 
-  line-height: 1.55;
+  color: #64748b;
 
   font-size: 14px;
 
-  color: #9fb0c6;
+  line-height: 1.65;
 }
 
-
 .action-link {
-  font-size: 14px;
+  color: #1769aa;
 
-  font-weight: 700;
+  font-size: 13px;
 
-  color: #5fd1ff;
+  font-weight: 800;
 }
 
 
 /* =========================================================
-   RECENT APPLICATIONS
-========================================================= */
+   RECENT SECTIONS
+   ========================================================= */
 
 .recent-applications-section {
-  width: 100%;
+  margin-bottom: 42px;
 
   padding: 28px;
 
-  border: 1px solid
-    rgba(120, 150, 190, 0.18);
-
-  border-radius: 20px;
-
-  background:
-    rgba(12, 26, 47, 0.82);
-
   box-sizing: border-box;
-}
 
+  background: #ffffff;
+
+  border: 1px solid #dbe5ee;
+
+  border-radius: 14px;
+
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+}
 
 .recent-header {
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
-  gap: 20px;
 
   margin-bottom: 20px;
 }
 
-
 .view-all-link {
-  flex-shrink: 0;
+  color: #1769aa;
 
   text-decoration: none;
 
-  font-size: 14px;
+  font-size: 13px;
 
-  font-weight: 700;
-
-  color: #61cfff;
+  font-weight: 750;
 }
-
 
 .view-all-link:hover {
   text-decoration: underline;
@@ -521,409 +337,205 @@
 
 
 /* =========================================================
-   EMPTY APPLICATIONS
-========================================================= */
-
-.empty-applications {
-  min-height: 190px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  flex-direction: column;
-
-  text-align: center;
-
-  border: 1px dashed
-    rgba(130, 160, 200, 0.22);
-
-  border-radius: 16px;
-
-  padding: 30px;
-
-  box-sizing: border-box;
-}
-
-
-.empty-icon {
-  font-size: 34px;
-
-  margin-bottom: 10px;
-}
-
-
-.loading-spinner {
-  font-size: 32px;
-
-  margin-bottom: 10px;
-
-  color: #62d2ff;
-
-  animation:
-    dashboard-spin 1s linear infinite;
-}
-
-
-@keyframes dashboard-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-
-.empty-applications h3 {
-  margin: 0 0 7px;
-
-  font-size: 17px;
-
-  color: #eaf1fa;
-}
-
-
-.empty-applications p {
-  margin: 0 0 18px;
-
-  font-size: 14px;
-
-  color: #92a4bb;
-}
-
-
-/* =========================================================
-   EMPTY ACTION BUTTON
-========================================================= */
-
-.empty-action-button {
-  display: inline-block;
-
-  padding: 11px 20px;
-
-  border-radius: 10px;
-
-  text-decoration: none;
-
-  font-size: 14px;
-
-  font-weight: 700;
-
-  color: #ffffff;
-
-  background: #1769d4;
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-
-.empty-action-button:hover {
-  background: #2080ed;
-
-  transform: translateY(-2px);
-}
-
-
-/* =========================================================
    APPLICATION LIST
-========================================================= */
+   ========================================================= */
 
 .applications-list {
   display: flex;
-
   flex-direction: column;
 
-  gap: 12px;
+  border-top: 1px solid #e5ebf1;
 }
 
-
 .application-item {
+  min-height: 70px;
+
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
   gap: 20px;
 
-  padding: 18px 20px;
+  padding: 14px 4px;
 
-  text-decoration: none;
-
-  border: 1px solid
-    rgba(120, 150, 190, 0.13);
-
-  border-radius: 14px;
-
-  background:
-    rgba(20, 39, 62, 0.65);
-
-  box-sizing: border-box;
-
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+  border-bottom: 1px solid #e5ebf1;
 }
-
-
-.application-item:hover {
-  transform: translateY(-2px);
-
-  border-color:
-    rgba(80, 180, 240, 0.35);
-
-  background:
-    rgba(25, 47, 73, 0.80);
-}
-
 
 .application-info {
-  min-width: 0;
-}
+  display: flex;
+  flex-direction: column;
 
+  gap: 5px;
+}
 
 .application-info strong {
-  display: block;
-
-  margin-bottom: 5px;
-
-  color: #edf4ff;
-
-  font-size: 15px;
-}
-
-
-.application-info span {
-  display: block;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-
-  color: #91a4ba;
+  color: #123b6d;
 
   font-size: 14px;
+
+  font-weight: 750;
 }
 
+.application-info span {
+  color: #64748b;
 
-/* =========================================================
-   APPLICATION STATUS
-========================================================= */
+  font-size: 13px;
+}
 
 .application-status {
-  flex-shrink: 0;
+  padding: 6px 12px;
 
-  padding: 7px 13px;
-
-  border-radius: 20px;
+  border-radius: 999px;
 
   font-size: 11px;
 
   font-weight: 800;
 
   text-transform: uppercase;
-
-  letter-spacing: 0.5px;
-
-  background:
-    rgba(120, 140, 160, 0.15);
-
-  color: #c4d0df;
 }
-
-
-.application-status.approved {
-  background:
-    rgba(47, 205, 153, 0.15);
-
-  color: #54dfb0;
-}
-
 
 .application-status.pending {
-  background:
-    rgba(255, 190, 70, 0.15);
-
-  color: #ffc65b;
+  background: #fff7ed;
+  color: #c2410c;
 }
 
+.application-status.approved,
+.application-status.verified {
+  background: #ecfdf5;
+  color: #047857;
+}
 
 .application-status.rejected {
-  background:
-    rgba(235, 80, 80, 0.15);
-
-  color: #ff7979;
-}
-
-
-.application-status.completed {
-  background:
-    rgba(47, 205, 153, 0.15);
-
-  color: #54dfb0;
+  background: #fef2f2;
+  color: #b42318;
 }
 
 
 /* =========================================================
-   RESPONSIVE - 1100
-========================================================= */
+   EMPTY STATE
+   ========================================================= */
+
+.empty-applications {
+  padding: 45px 20px;
+
+  text-align: center;
+
+  background: #f8fafc;
+
+  border: 1px dashed #cbd8e5;
+
+  border-radius: 12px;
+}
+
+.empty-icon {
+  margin-bottom: 12px;
+
+  font-size: 35px;
+}
+
+.empty-applications h3 {
+  margin: 0 0 7px;
+
+  color: #123b6d;
+
+  font-size: 17px;
+}
+
+.empty-applications p {
+  margin: 0 0 20px;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.empty-action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 42px;
+
+  padding: 0 18px;
+
+  border-radius: 8px;
+
+  background: #174a7c;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 750;
+}
+
+.empty-action-button:hover {
+  background: #123b6d;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 1100px) {
-
-  .owner-dashboard {
-    padding: 30px;
-  }
-
   .owner-stats {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
-
 }
-
-
-/* =========================================================
-   RESPONSIVE - 800
-========================================================= */
 
 @media (max-width: 800px) {
-
-  .owner-dashboard {
-    padding: 25px 20px 45px;
+  .dashboard-content {
+    padding: 25px 20px;
   }
 
   .owner-dashboard-header {
-    min-height: auto;
-
-    padding: 30px;
-
-    align-items: flex-start;
-
-    flex-direction: column;
-  }
-
-  .dashboard-refresh-button {
-    align-self: flex-start;
-  }
-
-  .quick-actions-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE - 600
-========================================================= */
-
-@media (max-width: 600px) {
-
-  .owner-dashboard {
-    padding: 18px 14px 35px;
-  }
-
-  .owner-dashboard-header {
-    padding: 25px 22px;
-
-    border-radius: 18px;
+    padding: 32px;
   }
 
   .owner-dashboard-header h1 {
     font-size: 34px;
   }
 
-  .owner-dashboard-header p {
-    font-size: 14px;
-  }
-
-  .owner-stats {
+  .quick-actions-grid {
     grid-template-columns: 1fr;
-
-    gap: 14px;
   }
-
-  .owner-stat-card {
-    min-height: 105px;
-
-    padding: 20px;
-  }
-
-  .quick-action-card {
-    padding: 21px;
-
-    gap: 16px;
-  }
-
-  .quick-action-icon {
-    width: 50px;
-    height: 50px;
-
-    font-size: 21px;
-  }
-
-  .quick-action-content h3 {
-    font-size: 17px;
-  }
-
-  .recent-applications-section {
-    padding: 20px;
-  }
-
-  .recent-header {
-    align-items: flex-start;
-
-    flex-direction: column;
-
-    gap: 10px;
-  }
-
 }
 
-
-/* =========================================================
-   RESPONSIVE - 450
-========================================================= */
-
-@media (max-width: 450px) {
-
-  .owner-dashboard {
-    padding: 12px 10px 30px;
+@media (max-width: 600px) {
+  .owner-stats {
+    grid-template-columns: 1fr;
   }
 
   .owner-dashboard-header {
-    padding: 21px 18px;
+    padding: 25px 20px;
   }
 
   .owner-dashboard-header h1 {
     font-size: 29px;
   }
 
-  .owner-dashboard-header p {
-    font-size: 13px;
-  }
-
   .quick-action-card {
-    flex-direction: column;
+    padding: 22px;
   }
 
-  .application-item {
-    align-items: flex-start;
+  .recent-applications-section {
+    padding: 20px;
+  }
+}
 
-    flex-direction: column;
+@media (max-width: 1200px) {
+  .owner-dashboard-header {
+    padding: 34px;
   }
 
-  .application-status {
-    align-self: flex-start;
+  .owner-stat-card {
+    padding: 18px;
   }
 
+  .owner-stat-card strong {
+    font-size: 28px;
+  }
 }

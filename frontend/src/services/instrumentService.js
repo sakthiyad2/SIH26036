@@ -12,6 +12,12 @@ const instrumentService = {
     );
   },
 
+  getMyInstruments: async () => {
+    return api.get(
+      "/instruments/my"
+    );
+  },
+
   create: async (instrumentData) => {
     return api.post(
       "/instruments",
@@ -36,10 +42,19 @@ const instrumentService = {
   },
 
   search: async (serialNumber) => {
+    const value = String(serialNumber || "").trim();
+
+    if (!value) {
+      return Promise.resolve({
+        data: {
+          success: true,
+          data: []
+        }
+      });
+    }
+
     return api.get(
-      `/instruments/search?serialNumber=${encodeURIComponent(
-        serialNumber
-      )}`
+      `/instruments/search/${encodeURIComponent(value)}`
     );
   },
 

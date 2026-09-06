@@ -49,6 +49,31 @@ function ApplicationDetails() {
     setError
   ] = useState("");
 
+  const [
+    starting,
+    setStarting
+  ] = useState(false);
+
+  const acceptInspection = async () => {
+    if (!application?.inspection_id) {
+      setError("This application has no assigned inspection.");
+      return;
+    }
+
+    try {
+      setStarting(true);
+      setError("");
+      if (application.inspection_status !== "IN_PROGRESS") {
+        await inspectorService.startInspection(application.inspection_id);
+      }
+      navigate(`/inspector/inspection/${application.application_id}`);
+    } catch (requestError) {
+      setError(requestError.response?.data?.message || "Unable to accept inspection");
+    } finally {
+      setStarting(false);
+    }
+  };
+
 
   // ==========================================================
   // LOAD DETAILS
@@ -398,14 +423,11 @@ function ApplicationDetails() {
 
           <Button
 
-            onClick={() =>
-              navigate(
-                `/inspector/inspection/${application.application_id}`
-              )
-            }
+            onClick={acceptInspection}
+            disabled={starting}
 
           >
-            Start Inspection
+            {starting ? "Accepting..." : "Accept & Start Inspection"}
           </Button>
 
 

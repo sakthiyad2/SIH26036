@@ -1,0 +1,26 @@
+.location-picker {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid #dbe3eb;
+  border-radius: 10px;
+  background: #f8fafc;
+}
+
+.location-map {
+  width: 100%;
+  height: 300px;
+  z-index: 0;
+}
+
+.location-picker-help {
+  margin: 0;
+  padding: 9px 12px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .location-map {
+    height: 240px;
+  }
+}

@@ -2,17 +2,16 @@ const express = require("express");
 
 const {
   getUsers,
+  getInspectors,
   getUser,
   updateUser,
   deleteUser
 } = require("../controllers/userController");
 
 const {
-  authenticate
+  authenticate,
+  authorizeRoles
 } = require("../middleware/authMiddleware");
-
-const authorizeRoles =
-  require("../middleware/roleMiddleware");
 
 const router = express.Router();
 
@@ -21,6 +20,13 @@ router.get(
   authenticate,
   authorizeRoles("ADMIN"),
   getUsers
+);
+
+router.get(
+  "/inspectors",
+  authenticate,
+  authorizeRoles("ADMIN", "OFFICIAL"),
+  getInspectors
 );
 
 router.get(

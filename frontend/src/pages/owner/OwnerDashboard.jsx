@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./OwnerDashboard.css";
 import api from "../../services/api";
+import InstrumentTable from "../../components/instruments/InstrumentTable";
 
 function OwnerDashboard() {
   const [stats, setStats] = useState({
@@ -11,8 +12,10 @@ function OwnerDashboard() {
     certificates: 0,
   });
 
+  const [instruments, setInstruments] = useState([]);
   const [applications, setApplications] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     loadDashboard();
@@ -21,41 +24,48 @@ function OwnerDashboard() {
   const loadDashboard = async () => {
     try {
       setLoading(true);
+      setError("");
 
-      const [instrumentsResponse, applicationsResponse] =
-        await Promise.all([
+      const [instrumentsResult, applicationsResult] =
+        await Promise.allSettled([
           api.get("/instruments/my"),
           api.get("/applications/my")
         ]);
 
-      const instruments =
-        instrumentsResponse.data?.data || [];
-      const ownerApplications =
-        applicationsResponse.data?.data || [];
+      if (instrumentsResult.status === "rejected") {
+        throw instrumentsResult.reason;
+      }
 
+      const instrumentList = instrumentsResult.value.data?.data || [];
+      const ownerApplications = applicationsResult.status === "fulfilled"
+        ? applicationsResult.value.data?.data || []
+        : [];
+
+      setInstruments(instrumentList);
       setStats({
-        instruments: instruments.length,
+        instruments: instrumentList.length,
         applications: ownerApplications.length,
-        verified: instruments.filter(
+        verified: instrumentList.filter(
           (instrument) => instrument.status === "VERIFIED"
         ).length,
         certificates: 0,
       });
       setApplications(ownerApplications);
-    } catch (error) {
-      console.error(
-        "Failed to load owner dashboard:",
-        error
-      );
 
+      if (applicationsResult.status === "rejected") {
+        setError("Applications could not be loaded, but your instrument count is up to date.");
+      }
+    } catch (error) {
+      console.error("Failed to load owner dashboard:", error);
       setStats({
         instruments: 0,
         applications: 0,
         verified: 0,
         certificates: 0,
       });
-
+      setInstruments([]);
       setApplications([]);
+      setError(error.response?.data?.message || "Unable to load your dashboard data. Please sign in again.");
     } finally {
       setLoading(false);
     }
@@ -88,6 +98,8 @@ function OwnerDashboard() {
         </div>
 
       </section>
+
+      {error && <div className="alert alert-error">{error}</div>}
 
 
       {/* =====================================================
@@ -361,6 +373,46 @@ function OwnerDashboard() {
 
         </div>
 
+      </section>
+
+
+      {/* =====================================================
+          MY INSTRUMENTS LIST
+      ===================================================== */}
+
+      <section className="recent-applications-section">
+        <div className="recent-header">
+          <div>
+            <span className="section-label">
+              MY INSTRUMENTS
+            </span>
+            <h2>
+              Your Registered Instruments
+            </h2>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="empty-applications">
+            Loading instruments...
+          </div>
+        ) : instruments.length === 0 ? (
+          <div className="empty-applications">
+            <div className="empty-icon">⚖️</div>
+            <h3>No instruments registered yet.</h3>
+            <p>Add your first instrument to begin verification.</p>
+            <Link to="/owner/instruments/add" className="empty-action-button">
+              Add Instrument
+            </Link>
+          </div>
+        ) : (
+          <InstrumentTable
+            instruments={instruments.slice(0, 5)}
+            onView={(instrument) =>
+              (window.location.href = `/owner/instruments/${instrument.instrument_id}`)
+            }
+          />
+        )}
       </section>
 
 

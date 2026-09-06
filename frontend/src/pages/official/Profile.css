@@ -1,0 +1,113 @@
+.official-profile-page {
+  max-width: 1040px;
+}
+
+.official-profile-page .page-header {
+  margin-bottom: 22px;
+}
+
+.official-profile-page .profile-panel {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+  padding: 32px;
+  background: #ffffff;
+  border: 1px solid #dbe5ee;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(15, 23, 42, 0.06);
+}
+
+.official-profile-page .profile-avatar {
+  width: 118px;
+  height: 118px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 6px solid #e6f0fb;
+  border-radius: 50%;
+  background: #174a7c;
+  color: #ffffff;
+  font-size: 38px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(23, 74, 124, 0.2);
+}
+
+.official-profile-page .profile-details h2 {
+  margin: 0;
+  color: #123b6d;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.official-profile-page .profile-role {
+  display: inline-flex;
+  margin: 9px 0 24px;
+  padding: 6px 10px;
+  border: 1px solid #bfdbfe;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.official-profile-page .profile-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.official-profile-page .profile-fields > div {
+  min-width: 0;
+  padding: 15px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #f8fafc;
+}
+
+.official-profile-page .profile-fields span,
+.official-profile-page .profile-fields strong {
+  display: block;
+}
+
+.official-profile-page .profile-fields span {
+  margin-bottom: 6px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.official-profile-page .profile-fields strong {
+  overflow-wrap: anywhere;
+  color: #1e293b;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+@media (max-width: 700px) {
+  .official-profile-page .profile-panel {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding: 24px 18px;
+  }
+
+  .official-profile-page .profile-details {
+    width: 100%;
+    text-align: center;
+  }
+
+  .official-profile-page .profile-fields {
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .official-profile-page .profile-fields {
+    grid-template-columns: 1fr;
+  }
+}

@@ -87,6 +87,7 @@ import AdminNotifications from "../pages/admin/Notifications";
 ========================================================= */
 
 import OfficialDashboard from "../pages/official/OfficialDashboard";
+import OfficialProfile from "../pages/official/Profile";
 
 
 function AppRoutes() {
@@ -323,6 +324,11 @@ function AppRoutes() {
             <Route
               path="/official/dashboard"
               element={<OfficialDashboard />}
+            />
+
+            <Route
+              path="/official/profile"
+              element={<OfficialProfile />}
             />
 
           </Route>

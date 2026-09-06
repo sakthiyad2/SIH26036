@@ -3,130 +3,118 @@
 ========================================================= */
 
 .dashboard-layout {
-  display: flex;
-
   width: 100%;
   min-height: 100vh;
 
-  background: #071525;
+  display: flex;
 
-  overflow-x: hidden;
+  background: #f4f7fa;
+
+  color: #172033;
 }
 
-
 /* =========================================================
-   SIDEBAR
+   SIDEBAR CONTAINER
 ========================================================= */
 
 .dashboard-sidebar {
   width: 250px;
-
   min-width: 250px;
 
-  min-height: 100vh;
+  height: 100vh;
 
-  position: fixed;
-
+  position: sticky;
   top: 0;
-  left: 0;
-  bottom: 0;
 
-  z-index: 1000;
+  align-self: flex-start;
 
-  background: #081a30;
-
-  overflow-y: auto;
+  z-index: 100;
 }
 
-
 /* =========================================================
-   MAIN
+   MAIN CONTENT AREA
 ========================================================= */
 
 .dashboard-main {
-  width: calc(100% - 250px);
+  flex: 1;
+
+  min-width: 0;
 
   min-height: 100vh;
 
-  margin-left: 250px;
-
   display: flex;
-
   flex-direction: column;
-
-  box-sizing: border-box;
 }
-
 
 /* =========================================================
    NAVBAR
 ========================================================= */
 
 .dashboard-navbar {
-  position: sticky;
+  width: 100%;
 
+  position: sticky;
   top: 0;
 
-  z-index: 900;
+  z-index: 90;
 
-  width: 100%;
+  background: #ffffff;
 }
 
-
 /* =========================================================
-   CONTENT
+   PAGE CONTENT
 ========================================================= */
 
 .dashboard-content {
+  flex: 1;
+
   width: 100%;
 
-  min-height: calc(100vh - 80px);
+  padding: 32px 36px;
 
   box-sizing: border-box;
-
-  padding: 0;
-
-  overflow-x: hidden;
 }
-
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
 
   .dashboard-sidebar {
-    width: 220px;
-
-    min-width: 220px;
+    width: 230px;
+    min-width: 230px;
   }
 
-  .dashboard-main {
-    width: calc(100% - 220px);
-
-    margin-left: 220px;
+  .dashboard-content {
+    padding: 26px;
   }
-
 }
 
+@media (max-width: 768px) {
 
-@media (max-width: 700px) {
+  .dashboard-layout {
+    display: block;
+  }
 
   .dashboard-sidebar {
-    position: fixed;
-
     width: 0;
-
     min-width: 0;
 
-    overflow: hidden;
+    height: 0;
+
+    position: static;
   }
 
   .dashboard-main {
     width: 100%;
-
-    margin-left: 0;
   }
 
+  .dashboard-content {
+    padding: 22px 16px;
+  }
+
+  .dashboard-layout .navbar-menu {
+    display: none;
+  }
 }

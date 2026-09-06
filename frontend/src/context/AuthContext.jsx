@@ -49,14 +49,12 @@ export function AuthProvider({
     try {
 
       const savedUser =
-        localStorage.getItem(
-          "user"
-        );
+        localStorage.getItem("user") ||
+        localStorage.getItem("currentUser");
 
       const savedToken =
-        localStorage.getItem(
-          "token"
-        );
+        localStorage.getItem("token") ||
+        localStorage.getItem("authToken");
 
 
       if (
@@ -93,6 +91,9 @@ export function AuthProvider({
       localStorage.removeItem(
         "token"
       );
+
+      localStorage.removeItem("authToken");
+      localStorage.removeItem("currentUser");
 
     } finally {
 
@@ -151,6 +152,9 @@ export function AuthProvider({
       authToken
     );
 
+    localStorage.setItem("authToken", authToken);
+    localStorage.setItem("currentUser", JSON.stringify(userData));
+
 
     console.log(
       "Authentication saved successfully"
@@ -185,6 +189,9 @@ export function AuthProvider({
     localStorage.removeItem(
       "token"
     );
+
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("currentUser");
   };
 
 

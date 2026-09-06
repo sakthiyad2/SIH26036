@@ -1,423 +1,351 @@
 /* =========================================================
-   e-Maap HOME PAGE
-   Glassmorphism Landing Page
+   e-Maap Home Page
+   Clean Professional Government Website Theme
    ========================================================= */
 
 .home {
-  min-height: calc(100vh - 70px);
-
-  background:
-    radial-gradient(
-      circle at 15% 20%,
-      rgba(37, 99, 235, 0.18),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 85% 75%,
-      rgba(6, 182, 212, 0.15),
-      transparent 35%
-    );
-
-  color: #f8fafc;
-
-  overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  background: #f5f7fa;
+  color: #172033;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
 
-
 /* =========================================================
-   HERO
+   HERO SECTION
    ========================================================= */
 
 .hero {
-  position: relative;
-
-  min-height: calc(100vh - 70px);
-
+  width: 100%;
+  min-height: 470px;
   display: flex;
-
   align-items: center;
+  position: relative;
+  overflow: hidden;
 
-  padding: 80px 8%;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(239, 246, 255, 0.98) 0%,
+      rgba(248, 250, 252, 0.96) 55%,
+      rgba(226, 238, 255, 0.9) 100%
+    );
+
+  border-bottom: 1px solid #dbe3ef;
 }
 
-
-/* =========================================================
-   HERO GLOW
-   ========================================================= */
+/* Decorative government-style background */
 
 .hero::before {
   content: "";
-
   position: absolute;
-
-  width: 450px;
-  height: 450px;
-
-  top: 10%;
-  left: -150px;
-
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(37, 99, 235, 0.20),
-      transparent 70%
-    );
-
-  filter: blur(50px);
-
-  pointer-events: none;
+  background: rgba(37, 99, 235, 0.06);
+  right: -120px;
+  top: -140px;
 }
-
 
 .hero::after {
   content: "";
-
   position: absolute;
-
-  width: 400px;
-  height: 400px;
-
-  right: -120px;
-  bottom: -100px;
-
+  width: 280px;
+  height: 280px;
   border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(34, 211, 238, 0.15),
-      transparent 70%
-    );
-
-  filter: blur(50px);
-
-  pointer-events: none;
+  background: rgba(30, 64, 175, 0.05);
+  right: 180px;
+  bottom: -180px;
 }
 
-
-/* =========================================================
-   HERO CONTENT
-   ========================================================= */
-
 .hero-content {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+  padding: 70px 0;
   position: relative;
-
-  max-width: 850px;
-
   z-index: 2;
 }
 
-
-/* =========================================================
-   BADGE
-   ========================================================= */
+/* SIH badge */
 
 .hero-badge {
   display: inline-flex;
-
   align-items: center;
-
-  padding: 7px 14px;
-
+  padding: 8px 16px;
   margin-bottom: 20px;
 
-  border:
-    1px solid rgba(96, 165, 250, 0.25);
+  background: #e8f0ff;
+  color: #174ea6;
 
-  border-radius: 50px;
+  border: 1px solid #c7d8f8;
+  border-radius: 6px;
 
-  background:
-    rgba(59, 130, 246, 0.10);
-
-  color: #67e8f9;
-
-  font-size: 12px;
-
+  font-size: 14px;
   font-weight: 700;
-
-  letter-spacing: 0.08em;
-
-  backdrop-filter: blur(12px);
-
-  box-shadow:
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.5px;
 }
 
-
-/* =========================================================
-   HEADING
-   ========================================================= */
+/* Main heading */
 
 .hero h1 {
-  margin: 0;
+  max-width: 850px;
+  margin: 0 0 20px;
 
-  font-size: clamp(
-    42px,
-    5vw,
-    72px
-  );
+  color: #102a56;
 
-  line-height: 1.05;
-
-  letter-spacing: -0.045em;
-
-  font-weight: 850;
-
-  color: #f8fafc;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -1px;
 }
 
-
-.hero h1::first-line {
-  background:
-    linear-gradient(
-      135deg,
-      #ffffff,
-      #bfdbfe,
-      #67e8f9
-    );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  color: transparent;
-}
-
-
-/* =========================================================
-   DESCRIPTION
-   ========================================================= */
+/* Description */
 
 .hero p {
   max-width: 720px;
+  margin: 0 0 32px;
 
-  margin:
-    25px 0 0;
+  color: #4b5d73;
 
-  color: #94a3b8;
-
-  font-size: 17px;
-
-  line-height: 1.8;
+  font-size: 18px;
+  line-height: 1.7;
 }
 
-
 /* =========================================================
-   BUTTON CONTAINER
+   HERO BUTTONS
    ========================================================= */
 
 .hero-buttons {
   display: flex;
-
+  align-items: center;
   gap: 14px;
-
-  margin-top: 32px;
-
   flex-wrap: wrap;
 }
 
+.primary-btn,
+.secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-/* =========================================================
-   PRIMARY BUTTON
-   ========================================================= */
+  min-width: 170px;
+  min-height: 50px;
+
+  padding: 0 24px;
+
+  border-radius: 6px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Primary button */
 
 .primary-btn {
-  position: relative;
+  background: #155eef;
+  color: #ffffff;
 
-  padding: 13px 24px;
+  border: 1px solid #155eef;
 
-  border: none;
-
-  border-radius: 11px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #2563eb,
-      #0891b2
-    );
-
-  color: white;
-
-  font-size: 13px;
-
-  font-weight: 750;
-
-  cursor: pointer;
-
-  box-shadow:
-    0 12px 30px
-      rgba(37, 99, 235, 0.25);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(21, 94, 239, 0.2);
 }
-
 
 .primary-btn:hover {
-  transform:
-    translateY(-3px);
-
-  box-shadow:
-    0 18px 40px
-      rgba(37, 99, 235, 0.35);
+  background: #104dcc;
+  border-color: #104dcc;
+  box-shadow: 0 6px 16px rgba(21, 94, 239, 0.25);
+  transform: translateY(-1px);
 }
 
-
-/* =========================================================
-   SECONDARY BUTTON
-   ========================================================= */
+/* Secondary button */
 
 .secondary-btn {
-  padding: 12px 24px;
+  background: #ffffff;
+  color: #17365f;
 
-  border:
-    1px solid rgba(148, 163, 184, 0.20);
-
-  border-radius: 11px;
-
-  background:
-    rgba(255, 255, 255, 0.055);
-
-  color: #dbeafe;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  backdrop-filter:
-    blur(15px);
-
-  transition:
-    transform 0.25s ease,
-    background 0.25s ease,
-    border-color 0.25s ease;
+  border: 1px solid #b9c7d9;
 }
-
 
 .secondary-btn:hover {
-  transform:
-    translateY(-3px);
-
-  background:
-    rgba(59, 130, 246, 0.10);
-
-  border-color:
-    rgba(96, 165, 250, 0.30);
+  background: #f1f6ff;
+  color: #155eef;
+  border-color: #155eef;
+  transform: translateY(-1px);
 }
 
-
 /* =========================================================
-   FEATURES
+   SERVICES SECTION
    ========================================================= */
 
 .features-section {
-  max-width: 1240px;
-  margin: 0 auto;
-  padding: 0 8% 80px;
+  width: 100%;
+  padding: 70px 0 80px;
+  background: #ffffff;
 }
 
 .features-section h2 {
-  margin: 0 0 24px;
-  color: #f8fafc;
-  font-size: 30px;
+  width: min(1200px, 90%);
+  margin: 0 auto 40px;
+
+  color: #142d50;
+
+  font-size: 34px;
   line-height: 1.2;
+  font-weight: 700;
+
+  text-align: center;
 }
+
+/* Service cards container */
 
 .feature-grid {
+  width: min(1200px, 90%);
+  margin: 0 auto;
+
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
 }
+
+/* =========================================================
+   SERVICE CARD
+   ========================================================= */
 
 .feature-card {
-  min-height: 190px;
-  padding: 24px;
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.055);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
-  backdrop-filter: blur(16px);
+  min-height: 230px;
+
+  padding: 30px 26px;
+
+  background: #ffffff;
+
+  border: 1px solid #dce3ec;
+  border-radius: 10px;
+
+  box-shadow: 0 3px 12px rgba(15, 35, 65, 0.06);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
+
+.feature-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #b9cbed;
+
+  box-shadow: 0 10px 25px rgba(15, 35, 65, 0.1);
+}
+
+/* Icons */
 
 .feature-card > span {
-  display: block;
-  margin-bottom: 18px;
-  font-size: 26px;
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 22px;
+
+  background: #edf4ff;
+  color: #155eef;
+
+  border: 1px solid #d4e3ff;
+  border-radius: 8px;
+
+  font-size: 25px;
 }
 
+/* Card title */
+
 .feature-card h3 {
-  margin: 0 0 8px;
-  color: #f8fafc;
-  font-size: 17px;
+  margin: 0 0 10px;
+
+  color: #17365f;
+
+  font-size: 19px;
+  line-height: 1.35;
+  font-weight: 700;
 }
+
+/* Card description */
 
 .feature-card p {
   margin: 0;
-  color: #94a3b8;
-  font-size: 14px;
+
+  color: #617086;
+
+  font-size: 15px;
   line-height: 1.6;
 }
 
-
 /* =========================================================
-   RESPONSIVE
+   TABLET
    ========================================================= */
 
-@media (max-width: 768px) {
-
+@media (max-width: 1000px) {
   .hero {
-    min-height: auto;
+    min-height: 430px;
+  }
 
-    padding:
-      70px 25px;
+  .hero-content {
+    padding: 60px 0;
   }
 
   .hero h1 {
-    font-size: 40px;
+    font-size: 42px;
+  }
+
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-content {
+    width: 88%;
+    padding: 50px 0 55px;
+  }
+
+  .hero-badge {
+    font-size: 13px;
+    padding: 7px 13px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
   }
 
   .hero p {
-    font-size: 15px;
-  }
-
-  .features-section {
-    padding: 0 25px 60px;
-  }
-
-  .feature-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-}
-
-
-@media (max-width: 480px) {
-
-  .hero {
-    padding:
-      55px 18px;
-  }
-
-  .hero h1 {
-    font-size: 34px;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   .hero-buttons {
+    width: 100%;
     flex-direction: column;
-  }
-
-  .features-section {
-    padding: 0 18px 45px;
-  }
-
-  .feature-grid {
-    grid-template-columns: 1fr;
+    align-items: stretch;
   }
 
   .primary-btn,
@@ -425,4 +353,22 @@
     width: 100%;
   }
 
+  .features-section {
+    padding: 50px 0 60px;
+  }
+
+  .features-section h2 {
+    font-size: 28px;
+    margin-bottom: 28px;
+  }
+
+  .feature-grid {
+    width: 88%;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .feature-card {
+    min-height: auto;
+  }
 }

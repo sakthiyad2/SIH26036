@@ -1,0 +1,145 @@
+.instrument-entry-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.instrument-form {
+  min-width: 0;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 28px;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.instrument-form form {
+  width: 100%;
+  display: grid;
+  gap: 18px;
+}
+
+.instrument-form .input-group {
+  margin-bottom: 0;
+}
+
+.location-status {
+  display: block;
+  margin-top: 6px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.coordinate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.coordinate-grid label {
+  display: block;
+  margin-bottom: 8px;
+  color: #172033;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.instrument-summary {
+  position: sticky;
+  top: 96px;
+  padding: 28px;
+  background: #123b6d;
+  border-radius: 14px;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(15, 42, 67, 0.14);
+}
+
+.instrument-summary-label {
+  color: #93c5fd;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.instrument-summary h2 {
+  margin: 10px 0 8px;
+  font-size: 24px;
+}
+
+.instrument-summary p {
+  margin: 0;
+  color: #dbeafe;
+  line-height: 1.6;
+}
+
+.instrument-summary-status {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 24px 0;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+}
+
+.instrument-summary-status .status-dot {
+  box-shadow: 0 0 0 4px rgba(134, 239, 172, 0.2);
+}
+
+.instrument-summary-status strong,
+.instrument-summary-status small {
+  display: block;
+}
+
+.instrument-summary-status small {
+  margin-top: 3px;
+  color: #bfdbfe;
+}
+
+.instrument-summary-list {
+  display: grid;
+  gap: 14px;
+}
+
+.instrument-summary-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.instrument-summary-list span {
+  color: #bfdbfe;
+  font-size: 12px;
+}
+
+.instrument-summary-list strong {
+  max-width: 58%;
+  overflow-wrap: anywhere;
+  text-align: right;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .instrument-entry-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .instrument-summary {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .instrument-form,
+  .instrument-summary {
+    padding: 20px;
+  }
+
+  .coordinate-grid {
+    grid-template-columns: 1fr;
+  }
+}

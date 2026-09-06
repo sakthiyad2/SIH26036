@@ -376,7 +376,8 @@ const Inspector = {
           `
           SELECT
             inspection_id,
-            application_id
+            application_id,
+            status
           FROM inspections
           WHERE
             inspection_id = ?
@@ -393,6 +394,10 @@ const Inspector = {
 
       const inspection =
         inspectionRows[0];
+
+      if (inspection.status !== "IN_PROGRESS") {
+        throw new Error("Inspection must be started before results can be submitted");
+      }
 
       // ------------------------------------------------------
       // Insert result

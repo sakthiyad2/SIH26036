@@ -1,25 +1,27 @@
+import { useEffect, useState } from "react";
 import InstrumentTable from "../../components/instruments/InstrumentTable";
+import instrumentService from "../../services/instrumentService";
 
 function Instruments() {
-  const instruments = [
-    {
-      instrument_id: 1,
-      instrument_name:
-        "Electronic Weighing Scale",
-      serial_number: "EWS-1001",
-      manufacturer: "ABC Instruments",
-      model_number: "ABC-500",
-      status: "VERIFIED",
-    },
-    {
-      instrument_id: 2,
-      instrument_name: "Platform Scale",
-      serial_number: "PS-2001",
-      manufacturer: "XYZ Ltd",
-      model_number: "XYZ-200",
-      status: "PENDING_VERIFICATION",
-    },
-  ];
+  const [instruments, setInstruments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const loadInstruments = async () => {
+      try {
+        setLoading(true);
+        const response = await instrumentService.getAll();
+        setInstruments(response?.data?.data || []);
+      } catch (err) {
+        setError(err.response?.data?.message || "Unable to load instruments");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadInstruments();
+  }, []);
 
   return (
     <div className="page">
@@ -31,9 +33,15 @@ function Instruments() {
         </p>
       </div>
 
-      <InstrumentTable
-        instruments={instruments}
-      />
+      {error && <div className="alert alert-error">{error}</div>}
+
+      {loading ? (
+        <div className="empty-state">
+          <p>Loading instruments...</p>
+        </div>
+      ) : (
+        <InstrumentTable instruments={instruments} />
+      )}
     </div>
   );
 }

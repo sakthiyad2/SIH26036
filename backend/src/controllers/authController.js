@@ -13,7 +13,6 @@ const register = async (req, res) => {
       name,
       email,
       password,
-      role,
       phone,
       address
     } = req.body;
@@ -30,7 +29,7 @@ const register = async (req, res) => {
       name,
       email,
       password,
-      role: role || "OWNER",
+      role: "OWNER",
       phone,
       address
     });

@@ -6,11 +6,14 @@ const inspectorService =
   require("../services/inspectorService");
 
 const {
-  authenticate
-} = require("../middleware/authMiddleware");
+  startInspection,
+  completeInspection
+} = require("../controllers/inspectorController");
 
-const authorizeRoles =
-  require("../middleware/roleMiddleware");
+const {
+  authenticate,
+  authorizeRoles
+} = require("../middleware/authMiddleware");
 
 
 // ============================================================
@@ -198,6 +201,36 @@ router.get(
 // GET INSPECTION HISTORY
 // GET /api/inspector/history
 // ============================================================
+
+router.patch(
+  "/:id/start",
+  async (req, res) => {
+    try {
+      await startInspection(req, res);
+    } catch (error) {
+      console.error("Start inspection route error:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Failed to start inspection"
+      });
+    }
+  }
+);
+
+router.patch(
+  "/:id/complete",
+  async (req, res) => {
+    try {
+      await completeInspection(req, res);
+    } catch (error) {
+      console.error("Complete inspection route error:", error);
+      return res.status(500).json({
+        success: false,
+        message: "Failed to complete inspection"
+      });
+    }
+  }
+);
 
 router.get(
   "/history",

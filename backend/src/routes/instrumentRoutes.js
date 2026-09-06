@@ -10,11 +10,9 @@ const {
 } = require("../controllers/instrumentController");
 
 const {
-  authenticate
+  authenticate,
+  authorizeRoles
 } = require("../middleware/authMiddleware");
-
-const authorizeRoles =
-  require("../middleware/roleMiddleware");
 
 const router = express.Router();
 
