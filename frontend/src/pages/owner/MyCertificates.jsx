@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import CertificateCard from "../../components/certificates/CertificateCard";
+import "./MyCertificates.css";
 
 function MyCertificates() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ function MyCertificates() {
   ];
 
   return (
-    <div className="page">
+    <div className="page owner-certificates-page">
       <div className="page-header">
         <h1>My Certificates</h1>
 

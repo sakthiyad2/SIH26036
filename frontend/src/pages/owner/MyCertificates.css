@@ -1,0 +1,114 @@
+.owner-certificates-page {
+  max-width: 1240px;
+}
+
+.owner-certificates-page .page-header {
+  margin-bottom: 24px;
+}
+
+.owner-certificates-page .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.owner-certificates-page .certificate-card {
+  position: relative;
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 26px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #dbe5ee;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.owner-certificates-page .certificate-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: #155eef;
+}
+
+.owner-certificates-page .certificate-card:hover {
+  transform: translateY(-3px);
+  border-color: #b9d3eb;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.1);
+}
+
+.owner-certificates-page .certificate-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  border: 1px solid #d5e6f7;
+  border-radius: 11px;
+  background: #edf5fc;
+  font-size: 24px;
+}
+
+.owner-certificates-page .certificate-card h3 {
+  margin: 0 0 18px;
+  color: #123b6d;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.owner-certificates-page .certificate-card p {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 106px minmax(0, 1fr);
+  gap: 8px;
+  margin: 0 0 9px;
+  color: #475569;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.owner-certificates-page .certificate-card p strong {
+  color: #64748b;
+  font-weight: 700;
+}
+
+.owner-certificates-page .certificate-card .status {
+  margin-top: 8px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  background: #ecfdf3;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.owner-certificates-page .certificate-card button {
+  min-height: 38px;
+  margin-top: 18px;
+  padding: 8px 14px;
+  border: 1px solid #174a7c;
+  border-radius: 8px;
+  background: #174a7c;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.owner-certificates-page .certificate-card button:hover {
+  background: #123b6d;
+}
+
+@media (max-width: 600px) {
+  .owner-certificates-page .certificate-card {
+    min-height: 0;
+    padding: 22px;
+  }
+}
