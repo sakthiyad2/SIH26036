@@ -35,6 +35,16 @@ const certificateService = {
     );
   },
 
+  verifyBySerialNumber: async (
+    serialNumber
+  ) => {
+    return api.get(
+      `/certificates/verify/serial/${encodeURIComponent(
+        serialNumber
+      )}`
+    );
+  },
+
   download: async (id) => {
     return api.get(
       `/certificates/${id}/download`

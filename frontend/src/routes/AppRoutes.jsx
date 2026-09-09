@@ -121,6 +121,11 @@ function AppRoutes() {
         />
 
         <Route
+          path="/certificate/serial/:serialNumber"
+          element={<CertificateDetails />}
+        />
+
+        <Route
           path="/search-instrument"
           element={<SearchInstrument />}
         />

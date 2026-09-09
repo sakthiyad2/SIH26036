@@ -8,6 +8,7 @@ function VerifyCertificate() {
 
   const [certificateNumber, setCertificateNumber] =
     useState("");
+  const [serialNumber, setSerialNumber] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,6 +19,18 @@ function VerifyCertificate() {
 
     navigate(
       `/certificate/${encodeURIComponent(certificateNumber.trim())}`
+    );
+  };
+
+  const handleSerialSubmit = (event) => {
+    event.preventDefault();
+
+    if (!serialNumber.trim()) {
+      return;
+    }
+
+    navigate(
+      `/certificate/serial/${encodeURIComponent(serialNumber.trim())}`
     );
   };
 
@@ -55,6 +68,31 @@ function VerifyCertificate() {
 
           <Button type="submit">
             Verify Certificate
+          </Button>
+        </form>
+
+        <form
+          className="verification-form"
+          onSubmit={handleSerialSubmit}
+        >
+          <div className="input-group">
+            <label>
+              Instrument Serial Number
+            </label>
+
+            <input
+              type="text"
+              value={serialNumber}
+              onChange={(event) =>
+                setSerialNumber(event.target.value)
+              }
+              placeholder="Example: DEMO-SCALE-001"
+              required
+            />
+          </div>
+
+          <Button type="submit">
+            Find Certificate
           </Button>
         </form>
       </section>

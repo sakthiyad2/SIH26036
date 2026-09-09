@@ -48,12 +48,7 @@ const createCertificate = async (data) => {
   return certificate;
 };
 
-const verifyCertificate = async (certificateNumber) => {
-  const certificate =
-    await Certificate.findByNumber(
-      certificateNumber
-    );
-
+const validateCertificate = (certificate) => {
   if (!certificate) {
     return {
       valid: false,
@@ -62,15 +57,13 @@ const verifyCertificate = async (certificateNumber) => {
   }
 
   const today = new Date();
-  const validUntil =
-    certificate.valid_until
-      ? new Date(certificate.valid_until)
-      : null;
+  const validUntil = certificate.valid_until
+    ? new Date(certificate.valid_until)
+    : null;
 
   if (
     !["VALID", "ACTIVE"].includes(
-      certificate.status ||
-      certificate.certificate_status
+      certificate.status || certificate.certificate_status
     ) ||
     (validUntil && validUntil < today)
   ) {
@@ -88,7 +81,18 @@ const verifyCertificate = async (certificateNumber) => {
   };
 };
 
+const verifyCertificate = async (certificateNumber) => {
+  const certificate = await Certificate.findByNumber(certificateNumber);
+  return validateCertificate(certificate);
+};
+
+const verifyCertificateBySerialNumber = async (serialNumber) => {
+  const certificate = await Certificate.findBySerialNumber(serialNumber);
+  return validateCertificate(certificate);
+};
+
 module.exports = {
   createCertificate,
-  verifyCertificate
+  verifyCertificate,
+  verifyCertificateBySerialNumber
 };

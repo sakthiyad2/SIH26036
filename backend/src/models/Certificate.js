@@ -59,6 +59,26 @@ const Certificate = {
     return rows[0];
   },
 
+  async findBySerialNumber(serialNumber) {
+    const [rows] = await pool.execute(
+      `SELECT c.*,
+              c.status AS status,
+              i.instrument_name,
+              i.serial_number,
+              i.manufacturer,
+              i.model_number
+       FROM certificates c
+       INNER JOIN instruments i
+         ON c.instrument_id = i.instrument_id
+       WHERE i.serial_number = ?
+       ORDER BY c.certificate_id DESC
+       LIMIT 1`,
+      [serialNumber]
+    );
+
+    return rows[0];
+  },
+
   async findByApplication(applicationId) {
     const [rows] = await pool.execute(
       `SELECT * FROM certificates

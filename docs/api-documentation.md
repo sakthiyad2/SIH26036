@@ -112,6 +112,9 @@ Get user certificates
 ### GET /certificates/verify/:number
 Public certificate verification (no auth required)
 
+### GET /certificates/verify/serial/:serial
+Public certificate verification by instrument serial number (no auth required)
+
 ---
 
 ## Status Codes

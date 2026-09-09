@@ -20,7 +20,7 @@ const formatCertificateDate = (value) => {
 };
 
 function CertificateDetails() {
-  const { certificateNumber } = useParams();
+  const { certificateNumber, serialNumber } = useParams();
   const [certificate, setCertificate] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -28,9 +28,9 @@ function CertificateDetails() {
   useEffect(() => {
     const loadCertificate = async () => {
       try {
-        const response = await certificateService.verify(
-          certificateNumber
-        );
+        const response = serialNumber
+          ? await certificateService.verifyBySerialNumber(serialNumber)
+          : await certificateService.verify(certificateNumber);
         const result = response.data;
 
         if (!result.valid || !result.certificate) {
@@ -53,18 +53,18 @@ function CertificateDetails() {
       }
     };
 
-    if (certificateNumber) {
+    if (certificateNumber || serialNumber) {
       loadCertificate();
     } else {
-      setError("Certificate number is missing.");
+      setError("Certificate number or serial number is missing.");
       setLoading(false);
     }
-  }, [certificateNumber]);
+  }, [certificateNumber, serialNumber]);
 
   const verificationUrl = `${
     import.meta.env.VITE_PUBLIC_APP_URL ||
     `${window.location.origin}${import.meta.env.BASE_URL}`
-  }certificate/${encodeURIComponent(certificateNumber || "")}`;
+  }certificate/${serialNumber ? `serial/${encodeURIComponent(serialNumber)}` : encodeURIComponent(certificateNumber || "")}`;
 
   return (
     <div className="public-page certificate-details-page">

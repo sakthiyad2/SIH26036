@@ -7,6 +7,7 @@ const {
   download,
   create,
   verify,
+  verifyBySerialNumber,
   updateStatus
 } = require("../controllers/certificateController");
 
@@ -25,6 +26,11 @@ const router = express.Router();
 router.get(
   "/verify/:number",
   verify
+);
+
+router.get(
+  "/verify/serial/:serial",
+  verifyBySerialNumber
 );
 
 router.get(

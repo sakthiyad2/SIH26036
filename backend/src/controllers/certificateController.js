@@ -6,7 +6,8 @@ const path = require("path");
 
 const {
   createCertificate,
-  verifyCertificate
+  verifyCertificate,
+  verifyCertificateBySerialNumber
 } = require("../services/certificateService");
 
 const getCertificates = async (
@@ -115,6 +116,25 @@ const verify = async (
   }
 };
 
+const verifyBySerialNumber = async (
+  req,
+  res,
+  next
+) => {
+  try {
+    const result = await verifyCertificateBySerialNumber(
+      req.params.serial
+    );
+
+    res.json({
+      success: true,
+      ...result
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 const updateStatus = async (
   req,
   res,
@@ -185,5 +205,6 @@ module.exports = {
   download,
   create,
   verify,
+  verifyBySerialNumber,
   updateStatus
 };
